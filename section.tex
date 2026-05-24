@@ -1,0 +1,1656 @@
+\section{群论基础}
+
+    \subsection{幺半群}
+
+        \begin{dfn}
+            [Binary-Operation]
+            {二元运算}
+            [Binary Operation]
+            [Dedicatia]
+            设 \(S\) 是一个集合. 则映射 \(\ast:S\times S\to S\) 称为在 \(S\) 上的一个\textbf{二元运算(binary operation)}.
+        \end{dfn}
+
+        \begin{rmk}
+            [Dedicatia]
+            在定义该二元运算的时候, 我们就已经隐含地要求了该二元运算在集合 \(S\) 上是封闭的(closed). 即, 对任意的 \(a,b\in S\), 都有 \(a\ast b\in S\).\\
+            所以接下来的定义中, 我们通常会省略掉该封闭性的表述. 但是在验证某个子集是否构成某种代数结构的时候, 我们需要特别注意该封闭性.
+        \end{rmk}
+
+        \begin{dfn}
+            [Monoid]
+            {幺半群}
+            [Monoid]
+            [Dedicatia]
+            设 \(M\) 是一个非空集合，且在 \(M\) 上定义了一个二元运算 \(\cdot\). 记 \(a\cdot b\) 为 \(ab\). 定义 \((M,\cdot)\) 是一个\textbf{幺半群(monoid)}, 如果对任意的 \(a,b,c\in M\)，都有
+            \begin{enumerate}
+                \item 结合律成立: \((ab)c=a(bc)\);
+                \item 恒等元存在: \(\exists e\in M\), 使得 \(\forall a\in M\), 都有 \(ea=ae=a\). 这时定义 \(e\) 为 \(M\) 的\textbf{恒等元(identity element)}.
+            \end{enumerate}
+            我们记作 \((M,\cdot)\) 或在不致混淆的情况下简记为 \(M\) 来表示一个幺半群.
+        \end{dfn}
+
+        \begin{dfn}
+            [Commutative-Monoid]
+            {交换幺半群}
+            [Commutative Monoid]
+            [Dedicatia]
+            设 \(M\) 是一个幺半群. 如果该二元运算 \(\cdot\) 还满足交换律: \(\forall a,b\in M\), \(ab=ba\), 则称 \(M\) 为一个\textbf{交换幺半群(commutative monoid)}.
+        \end{dfn}
+
+        \begin{xmp}
+            {几种常见的幺半群}
+            []
+            [Dedicatia]
+            下面列举几种常见的幺半群:\begin{itemize}
+                \item \((\N,+)\): 自然数集 \(\N\) 在加法运算 \(+\) 下构成一个幺半群，恒等元为 \(0\).
+                \item \((\Z,\times)\): 整数集 \(\Z\) 在乘法运算 \(\times\) 下构成一个幺半群，恒等元为 \(1\).
+                \item \((\R[x],+)\): 实系数多项式集合 \(\R[x]\) 在加法运算 \(+\) 下构成一个幺半群，恒等元为零多项式 \(0\).
+                \item 任意集合 \(S\) 上的所有映射构成的集合在映射的复合运算下构成一个幺半群，恒等元为恒等映射 \(\Id_S\). 这是一个不满足交换律的幺半群.
+            \end{itemize}
+        \end{xmp}
+
+        \begin{ppt}
+            {恒等元的唯一性}
+            [Uniqueness of Identity Element]
+            [Dedicatia]
+            设 \((M,\cdot)\) 是一个幺半群. 则 \(M\) 中的恒等元是唯一的.
+            \[\forall e_1,e_2\in M, \forall a\in M, ae_1=e_1a=a=ae_2=e_2a\implies e_1=e_2\]
+        \end{ppt}
+
+        \begin{dfn}
+            [Submonoid]
+            {子幺半群}
+            [Submonoid]
+            [Dedicatia]
+            设 \((M,\cdot)\) 是一个幺半群，且 \(N\subseteq M\). 如果 \(N\) 在 \(M\) 的二元运算 \(\cdot\) 下也构成一个幺半群，则称 \(N\) 为 \(M\) 的一个\textbf{子幺半群(submonoid)}.\\
+            即, \(N\) 需要满足:
+            \begin{enumerate}
+                \item 对 \(M\) 的二元运算封闭: 对任意的 \(a,b\in N\), 有 \(ab\in N\);
+                \item \(N\) 中包含 \(M\) 的恒等元 \(e\).
+            \end{enumerate}
+        \end{dfn}
+
+    \subsection{群}
+
+        \begin{dfn}
+            [Group]
+            {群}
+            [Group]
+            [Dedicatia]
+            设 \((G,\cdot)\) 是一个幺半群. 如果: 
+            \[\forall a\in G,\exists b\in G \st ab=ba=e\]
+            则称 \(G\) 为一个\textbf{群(group)}，且称该元素 \(b\) 为 \(a\) 的\textbf{逆元(inverse element)}，记作 \(a^{-1}\).\\
+            即对于一个非空集合 \(G\) 和在 \(G\) 上的二元运算 \(\cdot\), \((G,\cdot)\) 是一个群当且仅当对任意的 \(a,b,c\in G\) 都满足:
+            \begin{enumerate}
+                \item 结合律: \((ab)c=a(bc)\);
+                \item 恒等元存在: \(\exists e\in G\st\forall a\in G\), \(ea=ae=a\);
+                \item 逆元存在: \(\forall a\in G,\exists b\in G \st ab=ba=e\);
+            \end{enumerate}
+        \end{dfn}
+
+        \begin{ppt}
+            {逆元唯一}
+            [Uniqueness of Inverse Element]
+            [Dedicatia]
+            设 \((G,\cdot)\) 是一个群. 则对任意的 \(a\in G\), 其有唯一逆元.
+            \[\forall a\in G, a_1'a=aa_1'=e=a_2'a=aa_2'\implies a_1'=a_2'=a^{-1}.\]  
+        \end{ppt}
+
+        \begin{ppt}
+            {逆元的逆元是自身}
+            [Inverse of Inverse Element]
+            [Dedicatia]
+            设 \((G,\cdot)\) 是一个群. 则 \(\forall a\in G\), \((a^{-1})^{-1}=a\).
+        \end{ppt}
+
+        \begin{ppt}
+            {逆元的反对称性}
+            [Antisymmetry of Inverse Element]
+            [Dedicatia]
+            设 \((G,\cdot)\) 是一个群. \(\forall a,b\in G\), \((ab)^{-1}=b^{-1}a^{-1}\).
+        \end{ppt}
+
+        \begin{ppt}
+            {唯一确定性}
+            []
+            [Dedicatia]
+            设 \((G,\cdot)\) 是一个群. 则对任意的 \(a,b\in G\), 方程 \(ax=b\) 和方程 \(ya=b\) 在 \(G\) 中有唯一解，且该解分别为 \(x=a^{-1}b\) 和 \(y=ba^{-1}\).
+            \[\forall a,b\in G,\implies\exists!x,y\in G\st ax=b,ya=b.\]
+        \end{ppt}
+
+        \begin{ppt}
+            [Cancellation]
+            {左/右消去律}
+            [Left/Right Cancellation Law]
+            [Dedicatia]
+            设 \((G,\cdot)\) 是一个群. 则对任意的 \(a,b,c\in G\), 有:
+            \begin{enumerate}
+                \item 左消去律: 若 \(ab=ac\), 则 \(b=c\);
+                \item 右消去律: 若 \(ba=ca\), 则 \(b=c\).
+            \end{enumerate}
+        \end{ppt}
+
+        \begin{dfn}
+            [Order]
+            {基数 / 阶}
+            [Order]
+            [Dedicatia]
+            群 \(G\) 的\textbf{基数 / 阶(order)}定义为其元素个数，记作 \(|G|\). 若 \(|G|<\infty\)，则称 \(G\) 为一个\textbf{有限群(finite group)}，否则称为\textbf{无限群(infinite group)}.
+        \end{dfn}
+
+        \begin{dfn}
+            {元素的阶}
+            [Order of Element]
+            [Dedicatia]
+            设 \((G,\cdot)\) 是一个群，且 \(a\in G\). 如果存在最小的正整数 \(n\)，使得 \(a^n=e\)，则称 \(a\) 的\textbf{阶(order)}为 \(n\)，记作 \(\Ord(a)=n\). 否则称 \(a\) 的阶为无穷大，记作 \(\Ord(a)=\infty\).
+        \end{dfn}
+
+        \begin{dfn}
+            [AbelianGroup]
+            {交换群 / Abel 群}
+            [Commutative Group / Abelian Group]
+            [Dedicatia]
+            设 \((G,\cdot)\) 是一个群. 如果还满足交换律:
+            \[\forall a,b\in G, ab=ba\]
+            则称 \(G\) 为一个\textbf{交换群(commutative group)}或\textbf{Abel 群(Abelian group)}.
+        \end{dfn}
+
+        \begin{ins}
+            [GL]
+            {一般线性群}
+            [General Linear Group]
+            [Dedicatia]
+            设 \(\F\) 是一个数域，且 \(n\in\N^+\). 定义 \(\GL_n (\F)\) 为所有 \(n\times n\) 可逆矩阵在矩阵乘法下构成的集合. 则 \((\GL_n(\F),\times)\) 构成一个群，称为\textbf{一般线性群(general linear group)}. 该群的恒等元为单位矩阵 \(I_n\).
+        \end{ins}
+
+        \begin{ins}
+            [SL]
+            {特殊线性群}
+            [Special Linear Group]
+            [Dedicatia]
+            设 \(\F\) 是一个数域，且 \(n\in\N^+\). 定义 \(\SL_n (\F)\) 为所有行列式为 \(1\) 的 \(n\times n\) 矩阵在矩阵乘法下构成的集合. 则 \((\SL_n(\F),\times)\) 构成一个群，称为\textbf{特殊线性群(special linear group)}. 该群的恒等元为单位矩阵 \(I_n\).
+        \end{ins}
+
+    \subsection{群的基本结构}
+
+        \begin{dfn}
+            [Subgroup]
+            {子群}
+            [Subgroup]
+            [Dedicatia]
+            设 \((G,\cdot)\) 是一个群，且 \(H\subseteq G\). 如果 \(H\) 在 \(G\) 的二元运算 \(\cdot\) 下也构成一个群，则称 \(H\) 为 \(G\) 的一个\textbf{子群(subgroup)}.\\
+            记作 \((H,\cdot)\leq(G,\cdot)\) 或在不致混淆的情况下简记为 \(H\leq G\).\\
+            如果 \((H,\cdot)\neq(G,\cdot)\), 则称 \(H\) 为 \(G\) 的\textbf{真子群(proper subgroup)}，记作 \((H,\cdot)<(G,\cdot)\) 或简记为 \(H<G\).
+        \end{dfn}
+
+        \begin{ppt}
+            [Trivial-Subgroup]
+            {平凡子群}
+            [Trivial Subgroup]
+            [Dedicatia]
+            任何群 \(G\) 都至少有两个子群: \(\{e\}\) 和 \(G\) 本身. 这两个群称为 \(G\) 的\textbf{平凡子群(trivial subgroup)}.
+        \end{ppt}
+
+        \begin{ins}
+            {特殊线性群是一般线性群的一个子群}
+            \(\GL_n(\F)\geq\SL_n(\F)\)
+        \end{ins}
+
+        \begin{ppt}
+            [SubgroupTransitivity]
+            {子群的传递性}
+            [Transitivity of Subgroup]
+            [Dedicatia]
+            设 \(G,H,K\) 是群且具有相同的二元运算. 那么
+            \[(K,\cdot)\leq(H,\cdot), (H,\cdot)\leq(G,\cdot)\implies (K,\cdot)\leq(G,\cdot).\]
+        \end{ppt}
+
+        \begin{ppt}
+            {子群的逆也是子群}
+            设 \(H\) 是 \(G\) 的一个子群, 则 \(H^{-1}=\{h^{-1}:h\in H\}\) 也是 \(G\) 的一个子群.
+        \end{ppt}
+
+        \begin{ppt}
+            {子群的等价条件}
+            []
+            [Dedicatia]
+            设 \((G,\cdot)\) 是一个群，且 \(H\subseteq G\). 则下列命题等价:
+            \begin{enumerate}
+                \item \((H,\cdot)\) 是 \(G\) 的一个子群;
+                \item \(\forall a,b\in H\), \(ab^{-1}\in H\);
+                \item \(H\) 在 \(G\) 的二元运算 \(\cdot\) 下封闭且任意元素都存在逆元. \\ 即 \(\forall a,b\in H, ab\in H\) 且 \(\forall a\in H, a^{-1}\in H\).
+            \end{enumerate}
+            如果记 \(H^{-1}:=\{h^{-1}:h\in H\}\), 则条件 (2) 可改写为: \(HH^{-1}=H\).
+        \end{ppt}
+
+        \begin{prf}
+            提示: 只需证明封闭性:
+            \(e=hh^{-1}\in H\)\\
+            \(\forall a\in G, b=a^{-1}=ea^{-1}\in H\)\\
+            \(\forall a,b\in H, ab=(ab^{-1})b\in H\).
+        \end{prf}
+
+        \begin{ppt}
+            {任意交运算保持子群结构}
+            []
+            [Dedicatia]
+            设 \((G,\cdot)\) 是一个群，且 \(\{H_i\}_{i\in I}\) 是 \(G\) 的一族子群. 则
+            \[\bigcap_{i\in I} H_i\]
+            也是 \(G\) 的一个子群.
+        \end{ppt}
+
+        \begin{thm}
+            {子群的积成为子群的充要条件}
+            设 \((G,\cdot)\) 是群, 且 \(H_1,H_2\) 是 \(G\) 的子群. 则 \(H_1H_2=\{h_1h_2:h_1\in H_1,h_2\in H_2\}\) 是 \(G\) 的一个子群当且仅当 \(H_1H_2=H_2H_1\).
+        \end{thm}
+
+        \begin{prf}
+            提示: 
+            \[(AB)(AB)^{-1}=(AB)(B^{-1}A^{-1})=(AB)(BA)=A(BB)A=ABA=(BA)A=B(AA)=BA=AB.\]
+        \end{prf}
+
+        \begin{dfn}
+            {群的中心}
+            [Center of a Group]
+            [Dedicatia]
+            设 \((G,\cdot)\) 是一个群. 定义 \(G\) 的\textbf{中心(center)}为集合
+            \[C(G)=\{z\in G: zg=gz, \forall g\in G\}.\]
+        \end{dfn}
+
+        \begin{rmk}
+            直观理解, 群 \(G\) 的中心 \(C(G)\) 是 \(G\) 中所有可交换的元素集合. 它可以评价 \(G\) 的交换性. 
+        \end{rmk}
+
+        \begin{ppt}
+            {群的中心是一个子群}
+            设 \((G,\cdot)\) 是一个群, 则 \(C(G)\) 是 \(G\) 的一个子群.\\
+            所以我们也可以称 \(C(G)\) 为 \(G\) 的\textbf{中心子群(center subgroup)}.
+        \end{ppt}
+
+        \begin{ppt}
+            {群是 Abel 群当且仅当其中心等于自身}
+        \end{ppt}
+
+        \begin{dfn}
+            {群的中心化子}
+            [Centralizer of a Group]
+            [Dedicatia]
+            设 \((G,\cdot)\) 是一个群. \(H<G\), 定义 \(H\) 在 \(G\) 的\textbf{中心化子(centralizer)}为集合
+            \[C_G(H)=\{g\in G: gh=hg, \forall h\in H\}.\]
+            设 \(a\in G\), 定义 \(a\) 在 \(G\) 的中心化子为集合
+            \[C_G(a)=\{g\in G: ga=ag\}.\]
+        \end{dfn}
+
+        \begin{rmk}
+            中心化子是与特定元素或集合交换的元素集合.
+        \end{rmk}
+
+    \subsection{陪集分解与群的定量性质}
+
+        \begin{dfn}
+            {左/右陪集}
+            [Left/Right Coset]
+            [Dedicatia]
+            设 \((G,\cdot)\) 是一个群, \(H\leq G\). 则对于任意的 \(g\in G\), 定义 \(g\) 的\textbf{左陪集(left coset)}为集合
+            \[gH=\{gh:h\in H\}\]
+            定义 \(g\) 的\textbf{右陪集(right coset)}为集合
+            \[Hg=\{hg:h\in H\}.\]
+        \end{dfn}
+    
+        \begin{ppt}
+            {陪集的划分性质}
+            [Partition of Cosets]
+            [Dedicatia]
+            设 \((G,\cdot)\) 是一个群, \(H\leq G\). 则 \(G\) 中的所有左陪集构成 \(G\) 的一个划分, 同样地, \(G\) 中的所有右陪集也构成 \(G\) 的一个划分.
+        \end{ppt}
+
+        \begin{dfn}
+            {指数}
+            [Index]
+            [Dedicatia]
+            设 \((G,\cdot)\) 是一个群, \(H\leq G\). 定义 \(H\) 在 \(G\) 中的\textbf{指数(index)}为 \(G\) 的左陪集的个数, 记作 \([G:H]\).\\
+            事实上, 可以证明 \(G\) 的左陪集的个数和 \(G\) 的右陪集的个数是相同的, 所以等价定义为 \(H\) 在 \(G\) 中的指数为 \(G\) 的右陪集的个数.
+        \end{dfn}
+        
+        \begin{thm}
+            {Lagrange 定理}
+            [Lagrange's Theorem]
+            设 \(G\) 是有限群, \(H\leq G\), 则
+            \[|G|=|H|\cdot [G:H]\]
+        \end{thm}
+
+        \begin{rmk}
+            这表明, 有限群 \(G\) 的任意子群 \(H\) 的阶 \(H\) 都整除 \(G\) 的阶 \(|G|\). 
+        \end{rmk}
+
+        \begin{rmk}
+            但是这不表明 \(G\) 的任意一个阶的约数都对应 \(G\) 的一个子群. 例如, 交错群 \(A_4\) 是一个阶为 \(12\) 的群, 但是 \(A_4\) 没有一个阶为 \(6\) 的子群.
+        \end{rmk}
+
+        \begin{dfn}
+            {自反元素}
+            [Reflexive Element]
+            [Dedicatia]
+            设 \((G,\cdot)\) 是群, \(x\) 是 \(G\) 中的自反元素当且仅当 \(x=x^{-1}\).\\
+            等价定义为 \(x\) 在 \(G\) 中的阶为 \(1\) 或 \(2\).
+        \end{dfn}
+
+        \begin{crl}
+            {均为自反元素的群是 Abel 群}
+            \(\forall x\in G\), \(x=x^{-1}\), 则 \(G\) 是一个 Abel 群.
+        \end{crl}
+
+        \begin{crl}
+            {素数阶群是 Abel 群}
+            设 \(G\) 是一个群且 \(|G|=p\) 是素数, 则 \(G\) 是一个 Abel 群. 
+        \end{crl}
+
+        \begin{rmk}
+            我们将稍后看到这样的 \(G\) 是循环群, 且同构于 \(\Z_p\).
+        \end{rmk}
+
+        \begin{thm}
+            {积集公式}
+            [Product Set Formula]
+            设 \(G\) 是有限群, \(A,B\leq G\). 则
+            \[|AB|=\frac{|A|\cdot|B|}{|A\cap B|}.\]
+        \end{thm}
+
+        \begin{prf}
+            提示: 考虑证明 
+            \[\frac{|AB|}{|A|}=\frac{|B|}{|A\cap B|}\]
+            即
+            \[[AB: A]=[B: A\cap B]\]
+            \(AB\) 是一些陪集 \(Ab\) 的并. 我们将证明它的个数恰好等于 \(B\) 中的陪集 \((A\cap B)b\) 的个数:
+            \[Ab=Ab' \Longleftrightarrow b'b^{-1}\in A\Longleftrightarrow b'b^{-1}\in A\cap B\Longleftrightarrow (A\cap B)b=(A\cap B)b'.\]
+        \end{prf}
+
+        \begin{crl}
+            {素数平方阶的群是 Abel 群}
+            设 \(G\) 是一个群且 \(|G|=p^2\) 是素数的平方, 则 \(G\) 是一个 Abel 群.
+        \end{crl}
+
+        \begin{rmk}
+            但此时不能保证 \(G\) 同构于 \(\Z_{p^2}\). \(G\) 可能同构于 \(\Z_p\oplus\Z_p\).
+        \end{rmk}
+
+        \begin{ins}
+            {Klein 4 元群}
+            [Klein 4 Group]
+            [Dedicatia]
+            定义 Klein 4 元群为
+            \[V_4=\{1,a,b,c\}\]
+            其中 \(c=ab=ba\) 且 \(c^2=1\), \(a^2=b^2\). \(V_4\) 有以下性质:
+            \begin{enumerate}[label=(\roman*)]
+                \item \(V_4\cong\Z_2\oplus\Z_2\);
+                \item \(V_4\) 是一个非循环的 Abel 群.
+            \end{enumerate}
+        \end{ins}
+
+    \subsection{群的同态与同构}
+
+        \begin{dfn}
+            [GroupHomomorphism]
+            {群同态}
+            [Group Homomorphism]
+            [Dedicatia]
+            设 \((G,\cdot)\) 和 \((H,\ast)\) 是两个群. 映射 \(f:G\to H\) 是一个\textbf{群同态(group homomorphism)}, 如果对任意的 \(a,b\in G\), 都有
+            \[f(a\cdot b)=f(a)\ast f(b).\]
+        \end{dfn}
+
+        \begin{dfn}
+            {群单同态 / 群满同态}
+            [Group Monomorphism / Group Epimorphism]
+            [Dedicatia]
+            设 \((G,\cdot)\) 和 \((H,\ast)\) 是两个群, \(f:G\to H\) 是一个群同态: 如果 \(f\) 是单射, 则称 \(f\) 是一个\textbf{群单同态(group monomorphism)}; 如果 \(f\) 是满射, 则称 \(f\) 是一个\textbf{群满同态(group epimorphism)}.
+        \end{dfn}
+
+        \begin{dfn}
+            [GroupIsomorphism]
+            {群同构}
+            [Group Isomorphism]
+            [Dedicatia]
+            设 \((G,\cdot)\) 和 \((H,\ast)\) 是两个群, \(f:G\to H\) 是一个群同态. 如果 \(f\) 是双射, 则称 \(f\) 是一个\textbf{群同构(group isomorphism)}, 记作 \(G\cong H\).
+        \end{dfn}
+
+        \begin{ppt}
+            {群同态保持单位元}
+            [Group Homomorphisms Preserve Identity]
+            设 \(f:G\to H\) 是群同态, 则 \(f(1_G)=1_H\).
+        \end{ppt}
+
+        \begin{ppt}
+            {群同态保持逆元}
+            [Group Homomorphisms Preserve Inverses]
+            设 \(f:G\to H\) 是群同态, 则 \(\forall a\in G, f(a^{-1})=f(a)^{-1}\).
+        \end{ppt}
+
+        \begin{ins}
+            {矩阵的行列式是群同态}
+            [Determinant as a Group Homomorphism]
+            行列式运算
+            \[\det : \GL_n(\R) \to (\R^*, \cdot)\]
+            是一个群同态. 但不是同构, 因为它不是单射.
+        \end{ins}
+
+        \begin{ins}
+            {实数加法群同构于正实数乘法群}
+            \((\R,+)\cong (\R^+, \cdot)\).
+            映射可以定义为任意指数函数如 \(f(x)=\exp x\).
+        \end{ins}
+
+        \begin{ins}
+            {整数加法群和 \(n\) 元循环群是同态的}
+            设 \(f: (\Z,+)\to (\Z_n, +)\), \(f(k)=k+n\Z\). 则 \(f\) 是一个群同态, 但不是同构, 因为它不是单射.
+        \end{ins}
+
+        \begin{rmk}
+            [Dedicatia]
+            证明两个群同构的步骤如下:
+            \begin{enumerate}[label=(\arabic*)]
+                \item 构造映射 \(f\) 并证明 \(f\) 是良定义的映射;
+                \item 证明 \(f\) 是同态, 即证明 \(f\) 满足 \(f(ab)=f(a)f(b)\);
+                \item 证明 \(f\) 是单射, 即证明 \(f(a)=f(b)\) 蕴含 \(a=b\);
+                \item 证明 \(f\) 是满射, 即证明 \(\forall h\in H\), \(\exists g\in G\) s.t. \(f(g)=h\).
+            \end{enumerate}
+            则 \(f\) 是一个群同构, 从而 \(G\cong H\).
+        \end{rmk}
+
+        \begin{dfn}
+            {群同态的像}
+            [Image of a Group Homomorphism]
+            [Dedicatia]
+            设 \(f:G\to H\) 是一个群同态. 定义 \(f\) 的\textbf{像(image)}为集合
+            \[\img f=\{h\in H: \exists g\in G, f(g)=h\}.\]
+        \end{dfn}
+
+        \begin{rmk}
+            群同态的像不一定是 \(H\), 只是 \(H\) 的一个子群. 只有当 \(f\) 是满同态时, 群同态的像才等于 \(H\).
+        \end{rmk}
+
+        \begin{dfn}
+            {群同态的核}
+            [Kernel of a Group Homomorphism]
+            [Dedicatia]
+            设 \(f:G\to H\) 是一个群同态. 定义 \(f\) 的\textbf{核(kernel)}为集合
+            \[\ker f=\{g\in G: f(g)=1_H\}.\]
+        \end{dfn}
+
+        \begin{rmk}
+            核是送到单位元的原像的集合. 群同态的核是 \(G\) 的一个子群. 只有当 \(f\) 是单同态时, 群同态的核才等于 \(\{1_G\}\).
+        \end{rmk}
+
+    \subsection{生成子群与循环群}
+
+        \begin{dfn}
+            [Generated-Subgroup]
+            {生成子群}
+            [Generated Subgroup]
+            [Dedicatia]
+            设 \((G,\cdot)\) 是一个群，且 \(S\subseteq G\). 定义包含 \(S\) 的所有子群的交:
+            \[\bigcap_{\substack{H_i\leq G\\S\subseteq H_i}} H_i\]
+            为由 \(S\) 在 \(G\) 中生成的\textbf{子群(subgroup generated by \(S\))}, 记作 \(\langle S\rangle\).\\
+            由单元集 \(\{a\}\) 生成的子群简记作 \(\langle a\rangle\).
+        \end{dfn}
+
+        \begin{ppt}
+            {生成子群中的元素}
+            []
+            [Dedicatia]
+            设 \(S\subseteq G\), 则 
+            \[\langle S\rangle=\qty{\prod_{i=1}^{n} s_i^{\epsilon_i} : n\in\N, s_i\in S, \epsilon_i=\pm 1}\]
+            其中 \(s_i\) 可重复地取 \(S\) 中的元素.
+        \end{ppt}
+
+        \begin{rmk}
+            [Dedicatia]
+            我们规定为了适合运算定律, 当 \(n=0\) 时,
+            \[s_i^0= e.\]
+            可知, 生成子群 \(\langle S\rangle\) 中的元素均可表示为 \(S\) 中元素的有限次乘积，且每个元素可以取正幂或负幂 / 逆元. 特别地, 当 \(S=\{a\}\) 时, 生成子群 \(\langle a\rangle\) 中的元素形如 \(a^n\)，其中 \(n\in\Z\).
+        \end{rmk}
+
+        \begin{dfn}
+            [Cyclic-Group]
+            {循环群}
+            [Cyclic Group]
+            [Dedicatia]
+            定义一个群 \((G,\cdot)\) 是\textbf{循环群}当且仅当 \(\exists\,a\in G\), \(G=\langle a\rangle\). 此时称 \(a\) 为该循环群的一个\textbf{生成元(generator)}. 
+        \end{dfn}
+
+        \begin{dfn}
+            [Period]
+            {循环群的周期}
+            [Period]
+            [Dedicatia]
+            设 \((G,\cdot)\) 是一个循环群，且 \(a\in G\) 是其一个生成元. 定义该群在 \(a\) 下的\textbf{周期(period)}为
+            \[\min\{n\in\N^+ : a^n=e\}.\]
+        \end{dfn}
+
+        \begin{ppt}
+            {循环群的周期等于循环群的阶}
+        \end{ppt}
+
+        \begin{ppt}
+            {有限循环群同构于某个剩余类加法群}
+            设 \(G\) 是循环群, 则 \(G \cong(\Z_n, +)\), 其中 \(n\) 是 \(G\) 的周期.
+        \end{ppt}
+
+        \begin{ppt}
+            {无限循环群同构于整数加法群}
+            设 \(G\) 是一个无限循环群, 则 \(G\cong (\Z,+)\).
+        \end{ppt}
+
+    \subsection{正规子群与商群}
+
+        \begin{dfn}
+            {共轭关系}
+            [Conjugate]
+            [Dedicatia]
+            设 \((G,\cdot)\) 是一个群. \(a,b\in G\) 是\textbf{共轭的(conjugate)} iff \(g\in G\) 使得 \(b=gag^{-1}\).
+        \end{dfn}
+
+        \begin{dfn}
+            {群的正规化子}
+            [Normalizer of a Group]
+            [Dedicatia]
+            设 \((G,\cdot)\) 是一个群. \(H<G\), 定义 \(H\) 在 \(G\) 的\textbf{正规化子(normalizer)}为集合
+            \[N_G(H)=\{g\in G: gHg^{-1}=H\}.\]
+        \end{dfn}
+
+        \begin{rmk}
+            正规化子 \(N_G(H)\) 是 \(G\) 中所有使得 \(H\) 在 \(G\) 中保持共轭不变 / 共轭封闭的元素集合. 也就是说, 正规化子 \(N_G(H)\) 是 \(G\) 中所有使得 \(H\) 的共轭等于 \(H\) 的元素集合.
+        \end{rmk}
+
+        \begin{dfn}
+            {正规子群}
+            [Normal Subgroup]
+            [Dedicatia]
+            设 \((G,\cdot)\) 是一个群, \(H<G\). 如果 \(\forall g\in G, gH=Hg\), 则称 \(H\) 是 \(G\) 的一个\textbf{正规子群(normal subgroup)}.\\
+            该条件也可以写为 \(\forall g\in G, gHg^{-1}=H\).\\
+            该条件也可以写作 \(\forall g\in G, \forall h\in H, ghg^{-1}\in H\).\\
+            正规子群记作 \(H\trianglelefteq G\). 特别地如果 \(H\neq G\), 记作 \(H\lhd G\).
+        \end{dfn}
+
+        \begin{ppt}
+            {局部正规性: 群是其正规化子的正规子群}
+            设 \(H\leq G\), 则 \(H\trianglelefteq N_G(H)\).
+        \end{ppt}
+
+        \begin{ppt}
+            {正规子群的等价表述}
+            设 \(H<G\), 则下列命题等价:
+            \begin{enumerate}[label=(\roman*)]
+                \item \(\forall\,g\in G, gH=Hg\);
+                \item \(\forall\,g\in G, gHg^{-1}=H\);
+                \item \(\forall\,g\in G, gHg^{-1}\subseteq H\)
+                \item \(\forall\,g\in G, \forall\,h\in H, ghg^{-1}\in H\).
+                \item 关于 \(H\) 的任意左陪集都是右陪集.
+                \item 正规化子 \(N_G(H)\) 等于 \(G\).
+            \end{enumerate}
+        \end{ppt}
+
+        \begin{ppt}
+            {中心子群是正规子群}
+            设 \(G\) 是群, \(C(G)\trianglelefteq G\).
+        \end{ppt}
+
+        \begin{ins}
+            {特殊线性群是一般线性群的一个正规子群}
+            \(\SL_n(\F)\lhd\GL_n(\F)\).
+        \end{ins}
+
+        \begin{cxmp}
+            {正规子群不具有传递性}
+            [Non-Transitivity of Normal Subgroups]
+            在正方形对称群 \(D_4\) 中, 考虑 \(H:=\{e, s, r^2, sr^2\}\) 和 \(K:=\{e, r^2\}\). 则 \(H\) 是 \(D_4\) 的一个正规子群, \(K\) 是 \(H\) 的一个正规子群, 但 \(K\) 不是 \(D_4\) 的一个正规子群.
+        \end{cxmp}
+
+        \begin{rmk}
+            有一些特殊情况可以使得正规子群具有传递性. 例如如果 \(G\) 是 Abel 群.
+        \end{rmk}
+
+        \begin{thm}
+            {类方程}
+            [Class Equation]
+            设 \(G\) 是一个有限群, 则
+            \[|G|=|C(G)|+\sum_{i=1}^k [G:C_G(a_i)]\]
+            其中 \(a_1,\dots,a_k\) 是 \(G\) 中所有不在中心 \(C(G)\) 中的元素的代表元. 或者也可以写作
+            \[|G|=\sum_{i=1}^k \frac{|G|}{|C_G(x_i)|}\]
+            其中 \(|C_G(x_i)|\) 是 \(G\) 中元素 \(x_i\) 的中心化子 \(C_G(x_i)\) 的阶.
+        \end{thm}
+
+        \begin{dfn}
+            {商群}
+            [Quotient Group]
+            [Dedicatia]
+            设 \((G,\cdot)\) 是一个群, \(H\lhd G\). 定义 \(G\) 关于 \(H\) 的\textbf{商群(quotient group)}为集合
+            \[G/H=\{gH: g\in G\}\]
+            配备运算
+            \[(gH)(g'H)=gg'H.\]
+        \end{dfn}
+
+        \begin{rmk}
+            [Dedicatia]
+            商群 \(G/H\) 中的元素是 \(G\) 中的左陪集, 是 \(G\) 中的元素按 \(H\) 的左陪集划分后的等价类. 商群 \(G/H\) 中的运算是由 \(G\) 中的运算诱导而来的.
+        \end{rmk}
+
+        \begin{ppt}
+            {商群的阶}
+            \(|G/H|=\frac{|G|}{|H|}\).
+        \end{ppt}
+
+        \begin{thm}
+            [FirstIsom]
+            {群同态基本定理 / 第一同构定理}
+            [Fundamental Theorem of Group Homomorphisms / First Isomorphism Theorem]
+            设 \(f:G\to H\) 是一个群同态. 则 
+            \[G/\ker f \cong \img f.\]
+            其中 \(f(x)\mapsto x\ker f\). 这称为\textbf{典范同构(canonical isomorphism)}.
+        \end{thm}
+
+        \begin{crl}
+            {商群同构定理}
+            [Isomorphism Theorem for Quotient Groups]
+            设 \(N\lhd G\), \(\pi:G\to G/N\) 是商映射. 则 \(G/N\cong G/\ker \pi\).
+        \end{crl}
+
+        \begin{ins}
+            {整数加法群与剩余类群的商群同构}
+            \(\Z_n \cong \Z/n\Z\).
+        \end{ins}
+
+        \begin{rmk}
+            [Dedicatia]
+            这是一个理解商群同构定理的例子. \(\Z_n\) 是模 \(n\) 的剩余类, 正好就是 \(\Z\) 按照 \(n\Z\) 标定的等价类, 自然地就同构于 \(\Z/n\Z\).
+        \end{rmk}
+
+        \begin{ins}
+            {特殊线性群与一般线性群的商群同构于正实数乘法群}
+            \(\GL_n(\F)/\SL_n(\F)\cong (\F^*, \cdot)\).
+        \end{ins}
+
+        \begin{crl}
+            [SubgroupCorrespondence]
+            {子群对应定理}
+            [Subgroup Correspondence Theorem]
+            设 \(G\) 是一个群, \(N\lhd G\). 则 \(G\) 中包含 \(N\) 的子群与 \(G/N\) 的子群之间存在一一对应关系. 
+        \end{crl}
+
+        \begin{crl}
+            [SecondIsom]
+            {第二同构定理}
+            [Second Isomorphism Theorem]
+            设 \(G\) 是一个群, \(H\leq G\), \(N\lhd G\). 则 \(HN=NH\leq G\), \(H\cap N\lhd H\), 且
+            \[H/(H\cap N)\cong HN/N.\]
+            典范同构为 \(h(H\cap N)\mapsto hN\).
+        \end{crl}
+
+        \begin{ins}
+            {剩余类加法群的第二同构定理}
+            \(m\Z\lhd\Z, n\Z\lhd\Z\). 则 \(m\Z+n\Z=m\Z\cap n\Z=\gcd(m,n)\Z\), \(m\Z\cap n\Z=\lcm(m,n)\Z\). 从而得到同构
+            \[\gcd(m,n)\Z / n\Z \cong M\Z/ \lcm(m,n)\Z .\]
+        \end{ins}
+
+        \begin{crl}
+            [ThirdIsom]
+            {第三同构定理}
+            [Third Isomorphism Theorem]
+            设 \(G\) 是一个群, \(N\lhd G\), \(K\lhd N\). 则 \(K\lhd G\), \(N/K\lhd G/K\), 且
+            \[(G/K)/(N/K)\cong G/N.\]
+            典范同构为 \(gN\mapsto gK(N/K)\).
+        \end{crl}
+
+        \begin{dfn}
+            {单群}
+            [Simple Group]
+            [Dedicatia]
+            设 \((G,\cdot)\) 是一个群. 如果 \(G\) 只有两个正规子群 \(\{1_G\}\) 和 \(G\) 本身, 则称 \(G\) 是一个\textbf{单群(simple group)}.
+        \end{dfn}
+
+        \begin{rmk}
+            [Dedicatia]
+            \textbf{有限单群分类}问题是群论中的重要研究. 其花费数十年才得以证明. 
+        \end{rmk}
+
+    \subsection{群在集合上的作用}
+
+        \begin{dfn}
+            {群在集合上的作用}
+            [Group Action]
+            [Dedicatia]
+            设 \((G,\cdot)\) 是一个群, \(X\) 是一个集合. 定义 \(G\) 在 \(X\) 上的\textbf{作用(action)}为一个映射
+            \[. : G\times X \to X, g.x=y\]
+            满足以下条件:
+            \begin{enumerate}
+                \item 单位元的作用是恒等映射: \(1_G.x=x\), \(\forall x\in X\);
+                \item 兼容性: \((g\cdot h).x=g.(h.x)\), \(\forall g,h\in G, x\in X\).
+            \end{enumerate}
+            记作 \(G\curvearrowright X\). \\
+            由于作用具有兼容性, 所以也常将 \(.\) 省略. 
+        \end{dfn}
+
+        \begin{dfn}
+            [SymmetricGroup]
+            {对称群}
+            [Symmetric Group]
+            [Dedicatia]
+            设 \(S\) 是一个集合. 定义 \(S\) 上的\textbf{对称群(symmetric group)}为所有 \(S\) 上的双射在映射的复合运算下构成的集合, 记作 \(\Sym(S)\). 则 \((\Sym(S),\circ)\) 构成一个群.\\
+            显然对称群在同构意义下只依赖于 \(S\) 中的元素个数 \(n\). 所以也记作 \(S_n\).
+        \end{dfn}
+
+        \begin{dfn}
+            {置换群}
+            [Permutation Group]
+            [Dedicatia]
+            设 \(S\) 是一个集合, \(G\leq \Sym(S)\). 则称 \(G\) 是 \(S\) 上的一个\textbf{置换群(permutation group)}.
+        \end{dfn}
+
+        \begin{ins}
+            {3 阶对称群}
+            \(S_3\) 是一个非交换群, 其元素个数为 \(6\). 其中的元素有如下三类:
+            \begin{itemize}
+                \item 恒等置换 \(1_{S_3}\);
+                \item 二元置换 / 对换 \((12), (13), (23)\);
+                \item 三元置换 / 全轮换 \((123), (132)\).
+            \end{itemize}
+        \end{ins}
+
+        \begin{dfn}
+            [AlternatingGroup]
+            {交错群}
+            [Alternating Group]
+            [Dedicatia]
+            设 \(n\in\N^+\). 定义 \(S_n\) 的\textbf{交错群(alternating group)}为 \(S_n\) 中所有偶置换在映射的复合运算下构成的集合, 记作 \(A_n\). 则 \((A_n,\circ)\) 构成一个群, \(A_n\lhd S_n\).
+        \end{dfn}
+
+        \begin{rmk}
+            [Dedicatia]
+            交错群是对称群的正规子群. 这可以通过奇偶映射
+            \[\sgn : S_n \to (\{\pm 1\}, \cdot)\]
+            构造, 其中 \(\sgn\) 是一个群同态, 将奇置换映射到 \(-1\), 偶置换映射到 \(1\). \(\ker \sgn = A_n\). 从而 \(A_n\) 是 \(S_n\) 的一个正规子群.
+        \end{rmk}
+
+        \begin{thm}
+            [Cayley]
+            {Cayley 定理}
+            [Cayley's Theorem]
+            [Dedicatia]
+            设 \(G\) 是一个群, 则 \(G\) 同构于某个置换群.
+        \end{thm}
+
+        \begin{ppt}
+            {对称群的中心是平凡的}
+        \end{ppt}
+
+        \begin{dfn}
+            {置换型}
+            [Cycle Type]
+            [Dedicatia]
+            设 \(\sigma\in S_n\). 定义 \(\sigma\) 的\textbf{置换型(cycle type)}为 \(\sigma\) 的所有不相交轮换的长度的列表. \\
+            例如, \(S_5\) 中的置换 \((12)(345)\) 的置换型为 \((2,3)\), \(S_5\) 中的置换 \((123)(45)\) 的置换型为 \((3,2)\).
+        \end{dfn}
+
+        \begin{ppt}
+            {同一置换型的元素在 \(S_n\) 中共轭}
+            设 \(\sigma, \tau\in S_n\). 如果 \(\sigma\) 和 \(\tau\) 的置换型相同, 则 \(\sigma\) 和 \(\tau\) 在 \(S_n\) 中共轭.
+        \end{ppt}
+
+        \begin{cxmp}
+            {对称群中的共轭的置换在交错群中不一定共轭}
+            考虑 \(S_3\) 中的全轮换 \((123)\) 和 \((132)\). 这两个置换在 \(S_3\) 中共轭, 因为 \((12)(123)(12)^{-1}=(132)\), 但在 \(A_3\) 中不共轭.
+        \end{cxmp}
+
+        \begin{ppt}
+            {对称群的生成元}
+            [Generators of Symmetric Groups]
+            设 \(S_n\curvearrowright \{1,2,\ldots,n\}\) \(n\geq 2\). 则 \(S_n\) 由所有二元置换生成.\\
+            即: \(\{(12), (13), \cdots, (1n)\}\) 是 \(S_n\) 的一个生成元系. 
+        \end{ppt}
+
+        \begin{ppt}
+            {交错群的生成元}
+            [Generators of Alternating Groups]
+            [Dedicatia]
+            设 \(A_n\curvearrowright \{1,2,\ldots,n\}\) \(n\geq 3\). 则 \(A_n\) 由所有三元置换生成.
+        \end{ppt}
+
+        \begin{ppt}
+            {交错群在 \(n\geq 5\) 时是单群}
+            设 \(A_n\curvearrowright \{1,2,\ldots,n\}\) \(n\geq 5\). 则 \(A_n\) 是一个单群.
+        \end{ppt}
+
+        \begin{crl}
+            {\(n\geq 5\) 时 \(S_n\) 的唯一非平凡正规子群是 \(A_n\)}
+            设 \(S_n\curvearrowright \{1,2,\ldots,n\}\) \(n\geq 5\). 则 \(S_n\) 的唯一非平凡正规子群是 \(A_n\).
+        \end{crl}
+
+        \begin{dfn}
+            {正则作用}
+            [Regular Action]
+            [Dedicatia]
+            群 \(G\) 在自身 \(G\) 上的作用定义为 \(g.x=gx\). 称之为\textbf{左正则作用}. 类似可定义右正则作用.
+        \end{dfn}
+        
+        \begin{ppt}
+            {正则作用是传递的}
+        \end{ppt}
+
+        \begin{dfn}
+            {诱导作用}
+            [Induced Action]
+            [Dedicatia]
+            设 \(H\leq G\), \(\Omega:=\{xH, x\in G\}\) 是左陪集集合. 定义 \(G\) 在 \(\Omega\) 上的作用为 \(g.(xH)=(gx)H\). 称之为\textbf{左诱导作用}. 类似可定义右诱导作用.
+        \end{dfn}
+
+        \begin{dfn}
+            {共轭作用}
+            [Conjugation Action]
+            [Dedicatia]
+        \end{dfn}
+
+        \begin{dfn}
+            [Orbit]
+            {轨道}
+            [Orbit]
+            [Dedicatia]
+            设 \(G \curvearrowright X\), \(x \in X\). 定义 \(x\) 的\textbf{轨道}为
+            \[\Orb(x)=\{g.x: g\in G\}.\]
+        \end{dfn}
+
+        \begin{rmk}
+            直观地, \(x\) 的轨道表示在 \(G\) 的作用下的活动范围. 
+        \end{rmk}
+
+        \begin{ppt}
+            {轨道的划分性质}
+            [Partition of Orbits]
+            [Dedicatia]
+            设 \(G \curvearrowright X\). 则 \(X\) 中的所有轨道构成 \(X\) 的一个划分.
+        \end{ppt}
+
+        \begin{dfn}
+            {传递作用}
+            [Transitive Action]
+            [Dedicatia]
+            设 \(G \curvearrowright X\). 如果 \(\forall\,x,y\in X\), \(\Orb(x)=\Orb(y)\), 则称 \(G\) 在 \(X\) 上的作用是\textbf{传递的(transitive)}. 也就是说 \(G\) 在 \(X\) 上的作用只有一个轨道, 也就是说 \(X\) 中的元素可以通过 \(G\) 的作用相互转换.
+        \end{dfn}
+
+        \begin{dfn}
+            [Stabilizer]
+            {稳定子}
+            [Stabilizer]
+            [Dedicatia]
+            设 \(G \curvearrowright X\), \(x\in X\). 定义 \(x\) 的\textbf{稳定子}为
+            \[\stab x=\{g\in G: g.x=x\}.\]
+        \end{dfn}
+
+        \begin{rmk}
+            直观地, \(x\) 的稳定子表示全体保持 \(x\) 不变的作用的集合.
+        \end{rmk}
+
+        \begin{ppt}
+            {稳定子是一个子群}
+            设 \(G \curvearrowright X\), \(x\in X\). 则 \(\stab x\) 是 \(G\) 的一个子群. 所以我们也称 \(\stab x\) 为 \(x\) 的\textbf{稳定子群(stabilizer subgroup)}.
+        \end{ppt}
+
+        \begin{thm}
+            {轨道-稳定子定理}
+            [Orbit-Stabilizer Theorem]
+            设 \(G \curvearrowright X\), 对任意 \(x\in X\). 则
+            \[|\Orb(x)|=\frac{|G|}{|\stab x|}.\]
+        \end{thm}
+
+        \begin{crl}
+            {传递作用的轨道-稳定子定理}
+            [Transitive Action Orbit-Stabilizer Theorem]
+            设 \(G \curvearrowright X\), \(x\in X\). 如果 \(G\) 在 \(X\) 上的作用是传递的, 则
+            \[|X|=\frac{|G|}{|\stab x|}.\]
+        \end{crl}
+
+        \begin{thm}
+            {Burnside 引理}
+            [Burnside's Lemma]
+            [Dedicatia]
+            设 \(G \curvearrowright X\), 则 \(G\) 在 \(X\) 上的轨道数为
+            \[|X|=\frac{1}{|G|}\sum_{g\in G}|\chi(g)|.\]
+            其中 \(\chi(g)=\{x\in X: g.x=x\}\) 是 \(g\) 的不动点集.
+        \end{thm}
+
+        \begin{rmk}
+            [Dedicatia]
+            Burnside 引理是计算群作用的轨道数的有力工具. 它通过统计每个群元素的不动点数来间接计算轨道数, 从而避免了直接枚举轨道的复杂性.\\
+            例如经典问题之用一系列珠子串成的手链的不同种类数, 这个种类数就是轨道数, 群作用就是该手链的对称群作用, 一般是 \(D_n\). 通过考虑 \(D_n\) 中每个元素的不动点数, 就可以计算出不同种类数.
+        \end{rmk}
+
+    \subsection{Sylow 定理}
+
+        \begin{dfn}
+            {Sylow $p$-子群}
+            [Sylow $p$-Subgroup]
+            [Dedicatia]
+            设 $G$ 是一个有限群, \(|G|=p^rn\), 其中 \(p\) 是一个素数, \(r\in\N\), \(n\in\N^+\) 且 \(p\nmid n\). 定义 \(G\) 中的一个\textbf{Sylow $p$-子群}为 \(G\) 中的一个阶为 \(p^r\) 的子群.
+        \end{dfn}
+
+        \begin{rmk}
+            [Dedicatia]
+            注意 Sylow $p$-子群的定义完全依赖 \(G\) 的阶, 其只对元素个数提出了要求.
+        \end{rmk}
+
+        \begin{thm}
+            [Sylow1]
+            {Sylow 定理 I: 存在性}
+            [Sylow's Theorem I: Existence]
+            设 \(G\) 是有限群. 对于 $|G|$ 的每一个素因子 $p$, 群 $G$ 中至少存在一个 Sylow $p$-子群.
+        \end{thm}
+
+        \begin{thm}
+            [Sylow2]
+            {Sylow 定理 II: 共轭性}
+            [Sylow's Theorem II: Conjugacy]
+            设 \(G\) 是有限群, \(p\) 是 \(G\) 的阶的一个素因子. 则 \(G\) 中的任意两个 Sylow $p$-子群都是共轭的.
+        \end{thm}
+
+        \begin{ppt}
+            {Sylow \(p\)-子群是正规子群等价于 Sylow \(p\)-子群的个数为 1}
+            也就是说, 如果 \(G\) 存在唯一的 Sylow \(p\)-子群, 那么它一定是正规的. 反过来也成立.
+        \end{ppt}
+
+        \begin{thm}
+            [Sylow3]
+            {Sylow 定理 III: 个数}
+            [Sylow's Theorem III: Number]
+            设 \(G\) 是有限群, \(p\) 是 \(G\) 的阶的一个素因子. 则 \(G\) 中 Sylow $p$-子群的个数满足以下条件:
+            \begin{enumerate}[label=(\roman*)]
+                \item Sylow $p$-子群的个数 \(N\) 满足 \(N\equiv 1\pmod p\);
+                \item Sylow $p$-子群的个数 \(N\) 整除 \(G\) 的阶.
+            \end{enumerate}
+        \end{thm}
+
+        \begin{crl}
+            [Sylow4]
+            {Sylow 子群的吸收性}
+            [Absorption of Sylow Subgroups]
+            有限群 \(G\) 的任意 \(p^m\) 阶子群 \(H\) 都包含在 \(G\) 的一个 Sylow \(p\)-子群中.
+        \end{crl}
+
+        \begin{rmk}
+            [Dedicatia]
+            Sylow 定理是分析有限阶群的有力工具, 它补全了 Lagrange 定理的逆命题的不足, 并且揭示了一个群的阶数已经限制了其大部分性质. 
+        \end{rmk}
+
+    \subsection{群的直积与半直积}
+
+        \begin{dfn}
+            {群的 (外) 直积}
+            [Direct Product of Groups]
+            [Dedicatia]
+            设 \((G,\cdot)\) 和 \((H,*)\) 是两个群. 定义 \(G\) 和 \(H\) 的\textbf{直积(direct product)}为集合
+            \[G\times H=\{(g,h): g\in G, h\in H\}\]
+            配备运算
+            \[(g_1,h_1)(g_2,h_2)=(g_1g_2, h_1*h_2).\]
+        \end{dfn}
+
+        \begin{ppt}
+            {直积群的运算}
+            设 \(\prod\limits_{i=1}^n G_i\) 是 \(n\) 个群 \(G_1, G_2, \ldots, G_n\) 的直积. 则 \(\prod\limits_{i=1}^n G_i\) 中的元素是 \(n\) 元组 \((g_1, g_2, \ldots, g_n)\), 其中 \(g_i\in G_i\):\\
+            其逆元为 \((g_1^{-1}, g_2^{-1}, \ldots, g_n^{-1})\), 单位元为 \((e_{G_1}, e_{G_2}, \ldots, e_{G_n})\).
+        \end{ppt}
+
+        \begin{thm}
+            {内直积}
+            [Internal Direct Product]
+            [Dedicatia]
+            设 \(G\) 是群, \(H,K\leq G\). 如果 \(H\) 和 \(K\) 满足以下条件:
+            \begin{enumerate}[label=(\roman*)]
+                \item 交换性: \(\forall h\in H, \forall k\in K, hk=kh\);
+                \item \(H\cap K=\{1_G\}\);
+                \item \(HK=G\).
+            \end{enumerate}
+            则称 \(G\) 是 \(H\) 和 \(K\) 的一个\textbf{内直积(internal direct product)}. 此时 \(G\cong H\times K\).
+        \end{thm}
+
+        \begin{thm}
+            {内直积与外直积的关系}
+            外直积 \(H\times K\) 与内直积 \(HK\) 是同构的. 也就是说, 如果 \(G\) 是 \(H\) 和 \(K\) 的一个内直积, 则 \(G\cong H\times K\). 如果 \(G\cong H\times K\), 则 \(G\) 中存在两个子群 \(H', K'\) 使得 \(H'\cong H, K'\cong K\), 且 \(G\) 是 \(H'\) 和 \(K'\) 的一个内直积.
+        \end{thm}
+
+        \begin{rmk}
+            我们接下来将不再区分内直积 (子群的直积, 得到的元素是原先群的元素) 和外直积 (两个完全无关的群的直积, 得到的元素是有序对), 统称为直积.
+        \end{rmk}
+
+        \begin{ppt}
+            {直积群的正规子群}
+            设 \(G=H\times K\). 则 \(H\lhd G\), \(K\lhd G\).
+        \end{ppt}
+
+        \begin{dfn}
+            {群的直和}
+            [Direct Sum of Groups]
+            [Dedicatia]
+            当直积中的每个群都是 Abel 群时, 该直积也称为\textbf{直和(direct sum)}. 这时记作 \(\oplus\).
+        \end{dfn}
+
+        \begin{dfn}
+            [GroupAutomorphism]
+            {群的自同构群}
+            [Automorphism Group of a Group]
+            [Dedicatia]
+            群 \(G\) 的所有自同构组成的集合, 记作 \(\Aut(G)\), 在映射的复合下形成一个群, 称为 \(G\) 的\textbf{自同构群}.
+        \end{dfn}
+
+        \begin{dfn}
+            [InnerAutomorphismGroup]
+            {内自同构群}
+            [Inner Automorphism Group]
+            [Dedicatia]
+            设 \(G\) 是一个群. 定义 \(G\) 的\textbf{内自同构群}为
+            \[\Inn(G)=\{f_g: G\to G, f_g(x)=gxg^{-1}, g\in G\}.\]
+        \end{dfn}
+
+        \begin{ppt}
+            {内自同构群是自同构群的一个正规子群}
+            \(\Inn(G)\lhd\Aut(G)\). 且
+            \[\Inn(G)\cong G/C(G). \]
+        \end{ppt}
+
+        \begin{dfn}
+            [OuterAutomorphismGroup]
+            {外自同构群}
+            [Outer Automorphism Group]
+            [Dedicatia]
+            定义 \(G\) 的\textbf{外自同构群}为商群
+            \[\Out(G)=\Aut(G)/\Inn(G).\]
+        \end{dfn}
+
+        \begin{xmp}
+            {循环群的自同构群的结构}
+            我们有:
+            \[\Aut(\Z_n)\cong(\Z_n, \times)\]
+            即
+            \[\Aut(\Z_n)\cong\{k\in\Z_n: \gcd(k,n)=1\}\]
+            其中 \((\Z_n, \times)\) 是模 \(n\) 的剩余类在乘法下构成的群. 因此我们有:
+            \begin{enumerate}[label=(\roman*)]
+                \item 阶数 \(|\Aut(\Z_n)|=\varphi(n)\), 其中 \(\varphi\) 是 Euler 函数;
+                \item \(\Aut(\Z_n)\) 是 Abel 群;
+                \item \(n=2,4,p^k, 2p^k\) iff \(\Aut(\Z_n)\cong\Z_{\varphi(n)}\).
+            \end{enumerate}
+            
+        \end{xmp}
+
+        \begin{xmp}
+            {\(S_6\) 的自同构群的结构}
+        \end{xmp}
+
+        \begin{ppt}
+            {对称群的自同构群}
+            设 \(n\in\N^+, n\geq 3, n\neq 6\). 则 \(\Aut(S_n)\cong\Inn(S_n)\). 
+        \end{ppt}
+
+        \begin{dfn}
+            {群的 (外) 半直积}
+            [Semidirect Product of Groups]
+            [Dedicatia]
+            设 \((G,\cdot)\) 和 \((H,*)\) 是两个群, \(\varphi\in\Hom(H,\Aut(G))\) 是一个群同态. 定义 \(G\) 和 \(H\) 的\textbf{半直积(semidirect product)}为集合 \(G\times H\), 配备运算
+            \[(g_1,h_1)(g_2,h_2)=(g_1\varphi(h_1)(g_2), h_1*h_2).\]
+            半直积记作 \(G\rtimes_\varphi H\) 或 \(G\rtimes H\) (当 \(\varphi\) 是唯一的).
+        \end{dfn}
+
+        \begin{ppt}
+            {半直积群的正规子群}
+            设 \(G=H\rtimes K\). 则 \(H\lhd G\), 但 \(K\leq G\) 不是正规的.
+        \end{ppt}
+
+        \begin{rmk}
+            [Dedicatia]
+            同样地我们也可以定义内半直积, 但我们不再区分内半直积和外半直积, 统称为半直积.\\
+            半直积允许使用某个同态 \(\varphi\) 对群的直积进行搅动, 从而得到不同的群结构. 这个同态 \(\varphi\) 的作用由 \(H\) 中的元素确定.
+        \end{rmk}
+
+    \subsection{有限生成 Abel 群的结构}
+
+        \begin{dfn}
+            {自由半群}
+            [Free Semigroup]
+            [Dedicatia]
+            设 \(X\) 是一个集合. 定义 \(X\) 上的\textbf{自由半群(free semigroup)}为所有 \(X\) 中元素 \(a,b,\cdots\) 的有限非空串在串联运算 \(\cdot:a,b,\cdots\mapsto ab\cdots\) 下构成的集合, 则该集合在该运算下是半群. 
+        \end{dfn}
+
+        \begin{dfn}
+            {自由群}
+            [Free Group]
+            [Dedicatia]
+            设 \(X\) 是一个集合. 定义 \(X\) 上的\textbf{自由群(free group)}为所有 \(X\) 中元素 \(a,b,\cdots\) 的有限字符串在串联运算 \(\cdot:a,b,\cdots\mapsto ab\cdots\) 下连同其形式逆构成的集合, 记作 \(X^*\). 则 \((X^*, \cdot)\) 构成一个群.
+        \end{dfn}
+
+        \begin{rmk}
+            [Dedicatia]
+            群 \(X^*\) 中的元素是 \(X\) 中的有限元素字符串. 例如, \(X=\{a,b\}\), 则 \(X^*\) 中的元素有 \(a, b, ab, ba, a^{-1}, b^{-1}, (ab)^{-1}, (ba)^{-1}, \cdots\).\\
+            我们可以验证其满足群的定义:
+            \begin{itemize}
+                \item 封闭性: \(X^*\) 中的元素在串联运算下仍然是 \(X^*\) 中的元素;
+                \item 结合性: 串联运算满足结合律;
+                \item 单位元: \(X^*\) 中的空串是单位元;
+                \item 逆元: \(X^*\) 中的每个元素都有一个形式逆, 例如 \(a\) 的逆是 \(a^{-1}\), \(ab\) 的逆是 \((ab)^{-1}\).
+            \end{itemize}
+        \end{rmk}
+
+        \begin{dfn}
+            {自由群的生成元}
+            [Generators of Free Groups]
+            设 \(X\) 是一个集合, \(X^*\) 是 \(X\) 上的自由群. 则称 \(X\) 是 \(X^*\) 的一个\textbf{生成元集 / 生成元系}.
+        \end{dfn}
+
+        \begin{dfn}
+            {有限生成自由群}
+            [Finitely Generated Free Group]
+            自由群 \(X^*\) 是\textbf{有限生成}的, 当且仅当 \(X\) 是一个有限集.
+        \end{dfn}
+
+        \begin{thm}
+            {自由群的吸收性}
+            [Absorption of Free Groups]
+            任意群都是某个自由群的商群, 任意有限生成群都是某个有限生成自由群的商群.
+        \end{thm}
+
+        \begin{dfn}
+            {群的表现}
+            [Presentation of a Group]
+            [Dedicatia]
+            称
+            \[G:\langle S : R \rangle\]
+            为群 \(G\) 的一个\textbf{表现}, 其中 \(S\) 是生成元集, \(R\) 是定义关系集.
+        \end{dfn}
+
+        \begin{ins}
+            {循环群的表现}
+            循环群 \(\Z_n\) 的一个表现为 \(\langle a: a^n=e\rangle\).
+        \end{ins}
+
+        \begin{ins}
+            {正多边形对称群的表现}
+            正 \(n\) 边形的对称群 \(D_n\) 的一个表现为 \(\langle a,b: a^2=b^n=1, aba=b^{-1}\rangle\). \\
+            其几何意义非常明显: \(a\) 表示一个轴对称, \(b\) 表示一个旋转. 其中 \(a^2=1\) 表示轴对称的平方是恒等变换, \(b^n=1\) 表示旋转 \(n\) 次是恒等变换, \(aba=b^{-1}\) 表示先旋转再轴对称和先轴对称再旋转的结果相同.
+        \end{ins}
+
+        \begin{dfn}
+            {自由 Abel 群}
+            [Free Abelian Group]
+            [Dedicatia]
+            设 \(X\) 是集合, 称表现为
+            \[\langle X: xy=yx,\forall x,y\in X\rangle\]
+            的群为 \(X\) 上的一个\textbf{自由 Abel 群}. 记作 \(\Z^{(X)}\).\\
+            \((\Z^{(X)}, +)\) 构成一个 Abel 群. 
+        \end{dfn}
+
+        \begin{rmk}
+            [Dedicatia]
+            自由 Abel 群是相应自由群的商群, 即 \(\Z^{(X)}\cong X^*/\langle xyx^{-1}y^{-1}: x,y\in X\rangle\).\\
+        \end{rmk}
+
+        \begin{thm}
+            {有限生成自由 Abel 群的结构}
+            任意有限生成自由 Abel 群都同构于有限个无限循环群的直积. 
+            \[\forall\Z^{(X)},\exists r\in\N, \Z^{(X)}\cong\Z^r.\]
+        \end{thm}
+
+        \begin{dfn}
+            {有限生成自由 Abel 群的秩}
+            [Rank of a Finitely Generated Free Abelian Group]
+            设 \(\Z^{(X)}\) 是一个有限生成自由 Abel 群, 其同构于 \(\Z^r\), 则称 \(r\) 是 \(\Z^{(X)}\) 的\textbf{秩(rank)}.
+        \end{dfn}
+
+    \subsection{小阶群的结构}
+
+        \subsubsection{只有 Abel 群的阶}
+
+            \begin{thm}
+                {素数阶群同构于循环群}
+                设 \(G\) 是一个素数阶的群, 则 \(G\cong (\Z_p, +)\), 其中 \(p=|G|\).\\
+                这是我们之前证明的结论.
+            \end{thm}
+
+            \begin{ins}
+                {阶为 \(2, 3, 5, 7, 11, 13\) 的群只有一种结构}
+            \end{ins}
+
+            \begin{thm}
+                {素数乘积阶群是循环群的条件}
+                设 \(p,q\) 是素数, \(p<q\), \(G\) 是一个阶为 \(pq\) 的群. 则 \(G\) 同构于循环群 \(\Z_{pq}\) 当且仅当 \(p\nmid q-1\).
+            \end{thm}
+
+            \begin{ins}
+                {阶为 \(15\) 的群只有一种结构}
+            \end{ins}
+
+            \begin{thm}
+                {素数平方阶群的结构}
+                设 \(G\) 是一个素数平方阶的群, 则 \(G\) 同构于以下两种结构之一: (1) 循环群 \((\Z_{p^2}, +)\); (2) 直和群 \((\Z_p, +)\oplus (\Z_p, +)\).\\
+                这两种群都是 Abel 群, 这是我们之前证明的结论.
+            \end{thm}
+
+            \begin{ins}
+                {阶为 \(4, 9\) 的群}
+                阶为 \(4\) 的群有以下两种结构:
+                \begin{enumerate}
+                    \item 循环群 \((\Z_4, +)\);
+                    \item 直和群 \((\Z_2, +)\oplus (\Z_2, +)\). Klein 四元群 \(V_4\) 就是一种例子.
+                \end{enumerate}
+                阶为 \(9\) 的群有以下两种结构:
+                \begin{enumerate}
+                    \item 循环群 \((\Z_9, +)\);
+                    \item 直和群 \((\Z_3, +)\oplus (\Z_3, +)\).
+                \end{enumerate}
+            \end{ins}
+
+        \subsubsection{阶为 \(6\) 的群: 两种结构}
+
+            \begin{ins}
+                {阶为 \(6\) 的群的结构}
+                设 \(G\) 是一个阶为 \(6\) 的群, 则 \(G\) 同构于以下两种结构之一: 
+                \begin{enumerate}
+                    \item 循环群 \(\Z_6\cong\Z_2\times\Z_3\), 这是由有限生成 Abel 群的结构定理得到的结果;
+                    \item 对称群 \(S_3\cong D_3\). 这是因为它们的表现都是 \[\langle a,b: a^2=b^3=e, aba=b^{-1}\rangle\]
+                \end{enumerate}
+                \(S_3\) 是最小阶的非交换群.
+            \end{ins}
+
+            \begin{xmp}
+                {交错群 \(A_4\) 没有阶为 \(6\) 的子群}
+                交错群 \(A_4\) 的结构为: \begin{enumerate}
+                    \item 恒等置换: \(1_{A_4}\);
+                    \item 三元轮换共 8 个: \((123), (132), (124), (142), (134), (143), (234), (243)\);
+                    \item 双对换共 3 个: \((12)(34), (13)(24), (14)(23)\).
+                \end{enumerate}
+                若 \(A_4\) 有 \(6\) 阶子群 \(G\), 则其要么同构于 \(\Z_6\), 要么同构于 \(S_3\): 分情况讨论: \begin{enumerate}[label=\arabic*)]
+                    \item 若 \(G\cong\Z_6\), 则 \(G\) 中有一个元素 \(g\) 的阶为 \(6\). 但 \(A_4\) 中没有元素的阶为 \(6\);
+                    \item 若 \(G\cong S_3\), 则根据置换型的共轭性, \(f\) 作为同构必然将 \(S_3\) 中的二元置换映射到 \(A_4\) 中的双对换. \(S_3\) 中的二元置换是不交换的, \(A_4\) 中的双对换是交换的, 也不可能发生.
+                \end{enumerate}
+                从而 \(A_4\) 没有阶为 \(6\) 的子群.
+            \end{xmp}
+
+            \iffalse
+            \begin{ppt}
+                {三角形对称群 \(D_3\) 同构于 \(S_3\)}
+                具体来讲, 其结构为: \begin{enumerate}
+                    \item 恒等变换 \(e\);
+                    \item 旋转变换 \(r, r^2\);
+                    \item 反射变换 \(s, sr, sr^2\).
+                \end{enumerate}
+                其中 \(r\) 是以三角形的中心为轴的旋转变换, \(s\) 是以三角形的某条边为轴的反射变换. \(D_3\) 与 \(S_3\) 有相同的结构:
+                \[\{a,b: a^2=b^3=e, aba=b^{-1}\}\]
+            \end{ppt}
+            \fi
+
+            \begin{ppt}
+                {\(A_3\) 同构于 \(\Z_3\)}
+                这是因为 \(A_3\) 中的全轮换恰好是交换的.
+            \end{ppt}
+
+        \subsubsection{阶为 \(8\) 的群: 五种结构}
+
+            \begin{xmp}
+                {交换 \(8\) 阶群的结构}
+                [Abelian Groups of Order \(8\)]
+                \(8\) 阶的 Abel 群有以下三种结构:
+                \begin{enumerate}
+                    \item 循环群 \((\Z_8, +)\);
+                    \item 直和群 \((\Z_4, +)\oplus (\Z_2, +)\);
+                    \item 直和群 \((\Z_2, +)\oplus (\Z_2, +)\oplus (\Z_2, +)\).
+                \end{enumerate}
+            \end{xmp}
+
+            \begin{ins}
+                {三维二元向量空间上的加法群}
+                设 \(\F_2\) 是二元域, 则 \((\F_2^3, +)\) 是一个阶为 \(8\) 的 Abel 群, 其结构为 \((\Z_2, +)\oplus (\Z_2, +)\oplus (\Z_2, +)=\Z_2^3\).
+            \end{ins}
+
+            \begin{ins}
+                {正方形对称群 \(D_4\)}
+                \(D_4\) 是一个阶为 \(8\) 的非交换群, 其表现为: 
+                \[\langle r,s: r^4=s^2=1, srs^{-1}=r^{-1}\rangle\]
+                其中 \(r\) 是以正方形的中心为轴的旋转变换, \(s\) 是以正方形的某对称轴的反射变换.
+            \end{ins}
+
+            \begin{ins}
+                {四元数群 \(Q_8\)}
+                \(Q_8\) 是一个阶为 \(8\) 的非交换群, 其结构为: 
+                \[\{1, -1, i, -i, j, -j, k, -k\}\]
+                其中 \(i^2 = j^2 = k^2 = ijk = -1\). 其表现为
+                \[\langle i,j: i^4=1, i^2=j^2, jij^{-1}=i^{-1}\rangle\]
+            \end{ins}
+
+            \begin{ppt}
+                {\(Q_8\) 的所有子群都是正规子群}
+            \end{ppt}
+
+            \begin{rmk}
+                枚举所有 \(Q_8\) 的子群:
+                \begin{enumerate}
+                    \item \(\{1\}\) 和 \(Q_8\) 本身, 显然是正规子群;
+                    \item \(\{1, -1\}\) 是 \(Q_8\) 的中心, 也是正规子群;
+                    \item \(\{1, -1, i, -i\}\), \(\{1, -1, j, -j\}\), \(\{1, -1, k, -k\}\) 都是 \(Q_8\) 的子群. 由于 \(Q_8\) 中的元素的共轭类为 \(\{1\}, \{-1\}, \{i, -i\}, \{j, -j\}, \{k, -k\}\), 这三个子群都是正规子群.
+                \end{enumerate}
+            \end{rmk}
+
+        \subsubsection{阶为 \(10, 14\) 的群}
+
+            \begin{thm}
+                {\(2p\) 阶非交换群同构于 \(D_p\)}
+                设 \(p\) 是一个素数, \(G\) 是一个阶为 \(2p\) 的非交换群. 则 \(G\cong D_p\).
+            \end{thm}
+
+            \begin{rmk}
+                \(G\) 的 Sylow \(p\)-子群的个数 \(N\) 满足 \(N=kp+1\mid 2\). 所以 \(N=1\). 则令 \(a\) 是一个 \(p\) 阶元素, \(\langle a\rangle\) 是 \(G\) 的正规子群. 取某个二阶元素 \(b\), 则
+                \[bab^{-1}=a^i\]
+                若 \(i=1\), 则 \(G\) 称为交换群; 若 \(i=-1\), 则 \(G\) 的结构为 \(\langle a,b: a^p=b^2=1, bab=a^{-1}\rangle\), 这正是 \(D_p\) 的结构.
+            \end{rmk}
+
+            \begin{ins}
+                {阶为 \(10, 14\) 的群}
+                阶为 \(10\) 的群有以下两种结构:
+                \begin{enumerate}
+                    \item 循环群 \(\Z_{10}\);
+                    \item 五边形对称群 \(D_5\).
+                \end{enumerate}
+                阶为 \(14\) 的群有以下两种结构:
+                \begin{enumerate}
+                    \item 循环群 \(\Z_{14}\);
+                    \item 七边形对称群 \(D_7\).
+                \end{enumerate}
+            \end{ins}
+
+            \begin{crl}
+                {\(D_p\) 可通过半直积构造}
+                设 \(p\) 是一个素数, 则 \(D_p\cong \Z_p\rtimes \Z_2\).\\
+                其中的 \(\Z_2\) 作用在 \(\Z_p\) 上的同态 \(\varphi\) 是唯一的, 将 \(\Z_2\) 中的非单位元素映射到 \(\Aut(\Z_p)\) 中的一个非平凡元素.
+            \end{crl}
+
+        \subsubsection{阶为 \(12\) 的群}
+
+            \begin{xmp}
+                {交换 \(12\) 阶群的结构}
+                [Abelian Groups of Order \(12\)]
+                \(12\) 阶的 Abel 群有以下两种结构:
+                \begin{enumerate}
+                    \item 循环群 \(\Z_{12}\);
+                    \item 直和群 \(\Z_2^2\oplus\Z_3\).
+                \end{enumerate}
+            \end{xmp}
+
+            \begin{xmp}
+                {非交换 \(12\) 阶群的结构}
+                [Non-Abelian Groups of Order \(12\)]
+                \(12\) 阶的非交换群有以下三种结构:
+                \begin{enumerate}
+                    \item 交错群 \(A_4\): \[\langle a,b\rangle: a^3=1, b^2=1, (ab)^3=1.\]
+                    \item 六边形对称群 \(D_6\): \[\langle a,b\rangle: a^6=1=b^2=1, bab^{-1}=a^5.\]
+                    \item 群 \(T\): \[\langle a,b\rangle: a^6=1, b^2=a^3, bab^{-1}=a^5.\]
+                \end{enumerate}
+            \end{xmp}
+
+            \iffalse
+            \begin{rmk}
+                取 \(12\) 阶群 \(G\) 的 Sylow \(3\)-子群, 则其个数只能是 \(1\) 或 \(4\). 取一个 Sylow \(3\)-子群 \(P\), 则 \(P=\left\langle c\right\rangle \), 这是由于 \(P\) 是素数阶的. \\
+                将 \(G\) 作用在 \(P\) 的陪集上, 考虑诱导作用 \(f:G\to S_4\), 则 \(\ker f\leq P\). 于是 \(\ker f=\{1\}\) 或 \(\ker f=P\). \\
+                (a) 若 \(\ker f=\{1\}\), 也就是说有 \(4\) 个 Sylow \(3\)-子群, 则 \(\img f\) 是 \(S_4\) 的 \(12\) 阶子群. 然而 \(S_4\) 的唯一 \(12\) 阶子群是 \(A_4\), 于是 \(G\cong A_4\);\\
+                (b) 若 \(\ker f=P\), 则仅有一个 Sylow \(3\)-子群, 这说明 \(G\) 只有两个三阶元素 \(c,c^2\). 
+            \end{rmk}
+
+            \vspace{6em}
+            \begin{tabular}{cccc}
+                {\huge \(\mathcal{L} \)} & {\huge \(G\)} & {\huge \(\mathscr{B}\)} & {\huge \(\mathcal{T} \)}\\
+                Linear Operator & Group & Banach Algebra & Topology
+            \end{tabular}
+            \fi
+
+            \begin{xmp}
+                {通过半直积构造的 \(12\) 阶非交换群}
+                \(12\) 阶非交换群 \(D_6, A_4, T\) 可以通过半直积构造:
+                \begin{enumerate}
+                    \item \(A_4\): \((\Z_2\oplus\Z_2)\rtimes\Z_3\), 
+                \end{enumerate}
+            \end{xmp}
+
+        \subsubsection{阶为 \(16\) 的群}
+
+            \begin{ins}
+                {交换 \(16\) 阶群的结构}
+                按照有限 Abel 群的分类, \(16\) 阶的 Abel 群有以下五种结构: \(\Z_{16}\), \(\Z_8\oplus\Z_2\), \(\Z_4\oplus\Z_4\), \(\Z_4\oplus\Z_2^2\), \(\Z_2^4\).
+            \end{ins}
+
+            \begin{ins}
+                {常见的标准群族中的 \(16\) 阶非交换群}
+                以下群都是 \(16\) 阶的非交换群:
+                \begin{enumerate}
+                    \item 正八边形的对称群 / 16 阶二面体群 \(D_8\);
+                    \item 16 阶广义四元数群 \(Q_{16}\);
+                    \item 16 阶半二面体群 \(SD_{16}\): \[\langle a,b\rangle:a^8=b^2=1, bab^{-1}=a^3.\]
+                    \item 16 阶模二面体群 \(MD_{16}\): \[\langle a,b\rangle:a^8=b^2=1, bab^{-1}=a^5.\]
+                \end{enumerate}
+            \end{ins}
+
+            \begin{ins}
+                {直积构造的 \(16\) 阶非交换群}
+                以下群都是 \(16\) 阶的非交换群:
+                \begin{enumerate}
+                    \item \(D_4\times\Z_2\);
+                    \item \(Q_8\times\Z_2\).
+                \end{enumerate}
+            \end{ins}
+
+            \begin{ins}
+                {半直积构造的 \(16\) 阶非交换群}
+                除去上面的结构之外, 还可以通过半直积构造以下三种阶为 \(16\) 的非交换群:
+                \begin{enumerate}
+                    \item \((C_4 \times C_2) \rtimes C_2\): 它有多种结构, 但只有一种是非交换的;
+                    \item \(C_4 \rtimes C_4\), 但不同构于 \(D_{16}\);
+                    \item \((C_2 \times C_2 \times C_2) \rtimes C_2\).
+                \end{enumerate}
+            \end{ins}
+
+            \begin{rmk}
+                \textbf{小阶群的结构总结}:\\
+                \begin{tabular}{c|cc}
+                    阶 & 交换群的结构 & 非交换群的结构\\
+                    \hline
+                    \(1\) & \(\Z_1\) & \\
+                    \(2\) & \(\Z_2\) & \\
+                    \(3\) & \(\Z_3\) & \\
+                    \(4\) & \(\Z_4\), \(\Z_2^2\) & \\
+                    \(5\) & \(\Z_5\) & \\
+                    \(6\) & \(\Z_6\) & \(S_3\)\\
+                    \(7\) & \(\Z_7\) & \\
+                    \(8\) & \(\Z_8\), \(\Z_4\oplus\Z_2\), \(\Z_2^3\) & \(D_4\), \(Q_8\)\\
+                    \(9\) & \(\Z_9\), \(\Z_3^2\) & \\
+                    \(10\) & \(\Z_{10}\) & \(D_5\)\\
+                    \(11\) & \(\Z_{11}\) & \\
+                    \(12\) & \(\Z_{12}\), \(\Z_2^2\oplus\Z_3\) & \(A_4\), \(D_6\), \(T\)\\
+                    \(13\) & \(\Z_{13}\) & \\
+                    \(14\) & \(\Z_{14}\) & \(D_7\)\\
+                    \(15\) & \(\Z_{15}\) & \\
+                    \(16\) & \(\Z_{16}\), \(\Z_8\oplus\Z_2\), \(\Z_4^2\), \(\Z_4\oplus\Z_2^2\), \(\Z_2^4\) & \(D_8\), \(Q_{16}\), \(SD_{16}\), \(MD_{16}\), \(D_4\times\Z_2\), \(Q_8\times\Z_2\), \((C_4 \times C_2) \rtimes \Z_2\), \(C_4 \rtimes C_4\), \((\Z_2^3) \rtimes \Z_2\)
+                \end{tabular}\\
+            \end{rmk}
+
+\section{环论基础}
+
+    \subsection{环}
+
+        \begin{dfn}
+            {环}
+            [Ring]
+            [Dedicatia]
+            环是一个集合 \(R\) 配备了两个二元运算 \(+\) 和 \(\cdot\) 的结构, 满足以下条件:
+            \begin{enumerate}
+                \item \((R, +)\) 是一个 Abel 群, 其单位元记作 \(0\);
+                \item \((R, \cdot)\) 是一个半群;
+                \item 乘法对加法满足左右分配律: \(\forall a,b,c\in R, a\cdot(b+c)=a\cdot b+a\cdot c, (a+b)\cdot c=a\cdot c+b\cdot c\).
+            \end{enumerate}
+        \end{dfn}
+
+        \begin{rmk}
+            [Dedicatia]
+            环不要求乘法有额外的结构, \textbf{只要有结合律就够了}. 实际上如果赋予其额外的结构会得到更细的分类.
+        \end{rmk}
+
+        \begin{ppt}
+            {乘法分配律}
+            [Distribution Laws]
+            设 \(R\) 是环, 对于 \(a_i,b_j\in R\), \(i=1,2,\cdots,m, j=1,2,\cdots,n\), 有
+            \[\qty(\sum_{i=1}^{m}a_i)\qty(\sum_{j=1}^{n}b_j)=\sum_{i=1}^{m}\sum_{j=1}^{n}a_i b_j.\]
+        \end{ppt}
+
+        \begin{ppt}
+            {负元的性质}
+            [Properties of Additive Inverses]
+            设 \(R\) 是环, 则对于 \(a,b\in R\), 有
+            \[(-a)b=a(-b)=-(ab);\qquad (-a)(-b)=ab.\]
+        \end{ppt}
+
+        \begin{dfn}
+            {数乘}
+            [Scalar Multiplication]
+            [Dedicatia]
+            设 \(R\) 是环, 定义 \(R\) 上的数乘为: \(\forall a\in R, n\in\Z\): \\
+            如果 \(n>0\):
+            \[na=\underbrace{a+a+\cdots+a}_{n}\]
+            如果 \(n=0\), 则 \(na=0\);\\
+            如果 \(n<0\), 则 \(na=-(|n|a)\).
+        \end{dfn}
+
+        \begin{dfn}
+            {含幺环}
+            [Ring with Unity]
+            [Dedicatia]
+            称一个环是\textbf{含幺环} (ring with unity), 当且仅当其对乘法是幺半群, 记作 \(1\).
+        \end{dfn}
+
+        \begin{rmk}
+            [Dedicatia]
+            含幺环的定义中没有要求 \(1\) 与 \(0\) 不同, 但我们通常会要求 \(1\neq 0\). 这是因为如果 \(1=0\), 则对于任意 \(a\in R\), 都有 \(a=a\cdot 1=a\cdot 0=0\), 从而 \(R=\{0\}\) 是一个平凡环. 我们对这种环不感兴趣.
+        \end{rmk}
+
+        \begin{dfn}
+            {交换环}
+            [Commutative Ring]
+            [Dedicatia]
+            称一个环是\textbf{交换环} (commutative ring), 当且仅当其乘法满足交换律: \(\forall a,b\in R, a\cdot b=b\cdot a\).
+        \end{dfn}
+
+        \begin{dfn}
+            {左/右零因子}
+            [Left/Right Zero Divisors]
+            [Dedicatia]
+            设 \(R\) 是一个环, \(a\in R\) 是 \(R\) 的一个\textbf{左零因子} (left zero divisor), 当且仅当存在 \(b\in R\setminus\{0\}\) 使得 \(ab=0\). \\
+            类似地, \(a\in R\) 是一个\textbf{右零因子} (right zero divisor), 当且仅当存在 \(c\in R\setminus\{0\}\) 使得 \(ca=0\).\\
+            若 \(a\) 同时是左零因子和右零因子, 则称 \(a\) 是一个\textbf{零因子} (zero divisor).
+        \end{dfn}
+
+        \begin{dfn}
+            {可逆元素 / 单位元素}
+            [Unit]
+            [Dedicatia]
+            设 \(R\) 是一个含幺环, \(a\in R\) 是 \(R\) 的一个\textbf{可逆元素/单位元素} (unit), 当且仅当存在 \(b\in R\) 使得 \(ab=ba=1\).
+        \end{dfn}
+
+        \begin{dfn}
+            {含幺环的单位群}
+            [Group of Units]
+            设 \(R\) 是一个含幺环, 则 \(R\) 中的所有单位元素构成一个群, 记作 \(R^\times\), 叫做 \(R\) 的\textbf{单位群}.
+        \end{dfn}
+
+        \begin{dfn}
+            {整环}
+            [Integral Domain]
+            [Dedicatia]
+            称一个环是\textbf{整环} (integral domain), 当且仅当它是没有零因子的含幺交换环.
+        \end{dfn}
+
+        \begin{dfn}
+            {体 / 可除环}
+            [Division Ring]
+            [Dedicatia]
+            称一个环是\textbf{体} (division ring), 当且仅当它是含幺环, 并且每个非零元素都是可逆的.
+        \end{dfn}
+
+        \begin{dfn}
+            {域}
+            [Field]
+            [Dedicatia]
+            交换的体叫做\textbf{域} (field).
+        \end{dfn}
+
+        \begin{rmk}
+            [Dedicatia]
+            只有在不含零因子的环中才有乘法的消去律. 因此, 只有在整环中才有乘法的消去律. 只有在体中才有乘法的逆元.
+        \end{rmk}
+
+        \begin{ins}
+            {整数环 \(\Z\)}
+            全体整数 \(\Z\) 在通常的加法和乘法下构成一个环. 它有如下性质:
+            \begin{enumerate}[label=(\arabic*)]
+                \item \(\Z\) 是一个含幺环, 其单位元素为 \(1\);
+                \item \(\Z\) 是一个交换环;
+                \item \(\Z\) 没有零因子, 是一个整环;
+                \item \(\Z\) 中的单位元素只有 \(1\) 和 \(-1\), 其单位群为 \(\Z^\times=\{1, -1\}\);
+                \item \(\Z\) 不是可除环, 例如 \(2\) 没有乘法逆元.
+            \end{enumerate}
+        \end{ins}
+
+        \begin{ins}
+            {方阵环}
+            设 \(R\) 是一个环, 则 \(n\) 阶方阵全体 \(M_n(R)\) 在矩阵加法和矩阵乘法下构成一个环, 其中, 方阵由 \(n\times n\) 个 \(R\) 中的元素组成. 它有如下性质:
+            \begin{enumerate}
+                \item 若 \(R\) 是含幺环, 则 \(M_n(R)\) 也是含幺环, 其单位元素为 \(I_n\);
+                \item \(M_n(R)\) 不一定是交换环;
+                \item \(M_n(R)\) 不一定没有零因子, 例如 \(M_2(\Z)\) 中的矩阵 \(\begin{pmatrix}1 & 0 \\ 0 & 0\end{pmatrix}\) 和 \(\begin{pmatrix}0 & 0 \\ 0 & 1\end{pmatrix}\) 都是零因子.
+            \end{enumerate}
+        \end{ins}
+
+        \begin{ins}
+            {有理数域 \(\Q\), 实数域 \(\R\), 复数域 \(\C\), 四元数可除环 \(\mathbb{H}\)}
+            在通常意义下的有理数域 \(\Q\), 实数域 \(\R\), 复数域 \(\C\) 都是域, 四元数可除环 \(\mathbb{H}\) 是一个非交换的体.
+        \end{ins}
+
+        \begin{ins}
+            {Gauss 整环}
+            设 \(R\) 是一个整环, 则 \(R[\ii]=\{a+b\ii: a,b\in R\}\) 在通常的加法和乘法下构成一个整环, 其中 \(\ii=\sqrt{-1}\). \\
+            例如, \(\Z[\ii]\) 是一个整环, 叫做 Gauss 整环. \(\Q[\ii]\) 是一个域, 叫做 Gauss 数域.
+        \end{ins}
+
+        \begin{ins}
+            {多项式环}
+            [Polynomial Ring]
+            设 \(R\) 是一个环, 则 \(R[x]\) 是由 \(R\) 中的元素作为系数的单变量多项式全体, 在通常的多项式加法和乘法下构成一个环.
+        \end{ins}
+
+        \begin{ins}
+            {模 \(n\) 剩余类环 \(\Z_n\)}
+            设 \(n\) 是一个正整数, 则 \(n\) 的剩余类环 \(\Z_n\) 是由所有 \(n\) 的剩余类组成的环, 在同余的加法和乘法下构成一个环.
+        \end{ins}
+
+    \subsection{环的同态与同构}
+
+        \begin{dfn}
+            {子环}
+            [Subring]
+            [Dedicatia]
+            设 \(R\) 是一个环, \(S\subseteq R\) 是 \(R\) 的一个子集. 当且仅当 \(S\) 在 \(R\) 的加法和乘法下封闭, 且 \(S\) 中的加法单位元 \(0_S\) 与 \(R\) 中的加法单位元 \(0_R\) 相同, 则称 \(S\) 是 \(R\) 的一个\textbf{子环}.
+        \end{dfn}
+
+        \begin{ins}
+            {整数环 \(\Z\) 的子环}
+            \(\Z\) 的子环有以下两种结构:
+            \begin{enumerate}
+                \item 平凡子环: \(\{0\}\) 和 \(\Z\) 本身;
+                \item \(n\Z=\{nk: k\in\Z\}\), 其中 \(n\) 是一个正整数.
+            \end{enumerate}
+        \end{ins}
+
+        \begin{dfn}
+            {环同态}
+            [Ring Homomorphism]
+            [Dedicatia]
+            设 \(R\) 和 \(S\) 是两个环, 则一个映射 \(f:R\to S\) 是一个\textbf{环同态}, 当且仅当对于 \(a,b\in R\), 有
+            \[f(a+b)=f(a)+f(b),\qquad f(ab)=f(a)f(b).\]
+        \end{dfn}
