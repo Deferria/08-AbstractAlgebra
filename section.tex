@@ -1654,3 +1654,115 @@
             设 \(R\) 和 \(S\) 是两个环, 则一个映射 \(f:R\to S\) 是一个\textbf{环同态}, 当且仅当对于 \(a,b\in R\), 有
             \[f(a+b)=f(a)+f(b),\qquad f(ab)=f(a)f(b).\]
         \end{dfn}
+
+        \begin{dfn}
+            {环同构}
+            [Ring Isomorphism]
+            [Dedicatia]
+            设 \(R\) 和 \(S\) 是两个环, 则一个环同态 \(f:R\to S\) 是一个\textbf{环同构}, 当且仅当 \(f\) 是双射.
+        \end{dfn}
+
+        \begin{dfn}
+            {理想}
+            [Ideal]
+            [Dedicatia]
+            设 \(R\) 是环, 则定义 \(R\) 的子集 \(I\) 是\textbf{理想}, 当且仅当满足下面的条件:
+            \begin{enumerate}
+                \item 对加法和减法封闭: \(\forall a,b\in I, a\pm b\in I\);
+                \item 对乘法封闭: \(\forall r\in R, a\in I, ra\in I\) 和 \(ar\in I\).
+            \end{enumerate}
+        \end{dfn}
+
+        \begin{rmk}
+            [Dedicatia]
+            由于环并不要求乘法交换, 所以定义中, 如果仅满足 \(ra\in I\), 称之为\textbf{左理想}; 如果仅满足 \(ar\in I\), 称之为\textbf{右理想}; 如果同时满足 \(ra\in I\) 和 \(ar\in I\), 则称之为\textbf{双边理想}.
+        \end{rmk}
+
+        \begin{dfn}
+            {商环}
+            [Quotient Ring]
+            [Dedicatia]
+            设 \(R\) 是一个环, \(I\) 是 \(R\) 的一个理想, 则商集 \(R/I=\{a+I: a\in R\}\) 在如下定义的加法和乘法下构成一个环, 叫做 \(R\) 关于 \(I\) 的\textbf{商环}:
+            \[(a+I)+(b+I)=(a+b)+I,\qquad (a+I)(b+I)=ab+I.\]
+        \end{dfn}
+
+        \begin{dfn}
+            {生成理想}
+            [Generated Ideal]
+            [Dedicatia]
+            设 \(X\) 是环 \(R\) 的子集, 则 \(R\) 中包含 \(X\) 的所有理想的交集是 \(R\) 的一个理想, 叫做\textbf{由 \(X\) 生成的理想}, 记作 \(\langle X\rangle\). 即
+            \[\langle X\rangle = \bigcap_{I \supseteq X} I = \Z X+XR+RX+RXR\]
+            其中
+            \begin{align*}
+                \Z X &= \left\{\sum_{i=1}^{n} z_i x_i: n\in\Z^+, z_i\in\Z, x_i\in X\right\},\\
+                XR &= \left\{\sum_{i=1}^{n} x_i r_i: n\in\Z^+, x_i\in X, r_i\in R\right\},\\
+                RX &= \left\{\sum_{i=1}^{n} r_i x_i: n\in\Z^+, r_i\in R, x_i\in X\right\},\\
+                RXR &= \left\{\sum_{i=1}^{n} r_i x_i s_i: n\in\Z^+, r_i,s_i\in R, x_i\in X\right\}.
+            \end{align*}
+            若 \(R\) 是交换环, 则 \(\langle X\rangle = \Z X + RX\). 若 \(R\) 是含幺交换环, 则 \(\langle X\rangle = RX\).
+        \end{dfn}
+
+        \begin{dfn}
+            {主理想}
+            [Principal Ideal]
+            [Dedicatia]
+            设 \(R\) 是一个环, 则 \(R\) 中由单个元素 \(a\) 生成的理想 \(\langle a\rangle\) 叫做\textbf{主理想}.
+        \end{dfn}
+
+        \begin{dfn}
+            {主理想环}
+            [Principal Ideal Ring]
+            [Dedicatia]
+            设 \(R\) 是一个环, 当且仅当 \(R\) 中的全部理想都是主理想, 则称 \(R\) 是一个\textbf{主理想环}.
+        \end{dfn}
+
+        \begin{dfn}
+            {主理想整环}
+            [Principal Ideal Domain]
+            [Dedicatia]
+            设 \(R\) 是一个环, 当且仅当 \(R\) 是一个整环, 并且 \(R\) 中的全部理想都是主理想, 则称 \(R\) 是一个\textbf{主理想整环}.
+        \end{dfn}
+
+        \begin{dfn}
+            {环同态的像}
+            [Image of a Homomorphism]
+            设 \(R\) 和 \(S\) 是两个环, \(f:R\to S\) 是一个环同态, 则 \(f(R)=\{f(a): a\in R\}\) 是 \(S\) 的一个子环, 叫做 \(f\) 的\textbf{像}.
+        \end{dfn}
+
+        \begin{dfn}
+            {环同态的核}
+            [Kernel of a Homomorphism]
+            设 \(R\) 和 \(S\) 是两个环, \(f:R\to S\) 是一个环同态, 则 \(\ker f=\{a\in R: f(a)=0_S\}\) 叫做 \(f\) 的\textbf{核}.
+        \end{dfn}
+
+        \begin{thm}
+            {环同态基本定理 / 第一同构定理}
+            [First Isomorphism Theorem for Rings]
+            设 \(f:R\to S\) 是环同态, 则:
+            \begin{enumerate}
+                \item \(\ker f\) 是 \(R\) 的一个理想;
+                \item \(\img f\) 是 \(S\) 的一个子环;
+                \item \(R/\ker f\cong \img f\).
+            \end{enumerate}
+        \end{thm}
+
+        \begin{crl}
+            {理想对应定理}
+            [Correspondence for Ideals]
+            设 \(R\) 是一个环, \(I\) 是 \(R\) 的一个理想, 则 \(R/I\) 中的理想与 \(R\) 中包含 \(I\) 的理想之间存在一一对应关系. \\
+            具体来说, 如果 \(J\) 是 \(R/I\) 的一个理想, 则对应的 \(R\) 中的理想为 \(\pi^{-1}(J)\), 其中 \(\pi:R\to R/I\) 是自然投射; 如果 \(K\) 是 \(R\) 中包含 \(I\) 的一个理想, 则对应的 \(R/I\) 中的理想为 \(\pi(K)\).
+        \end{crl}
+
+        \begin{crl}
+            {第二同构定理}
+            [Second Isomorphism Theorem for Rings]
+            设 \(I,J\) 是环 \(R\) 的两个理想, 则
+            \[I/(I\cap J)\cong (I+J)/J.\]
+        \end{crl}
+
+        \begin{crl}
+            {第三同构定理}
+            [Third Isomorphism Theorem for Rings]
+            设 \(I\subseteq J\) 是环 \(R\) 的两个理想, 则
+            \[(R/I)/(J/I)\cong R/J.\]
+        \end{crl}
