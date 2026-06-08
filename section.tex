@@ -1201,8 +1201,6 @@
 
     \subsection{小阶群的结构}
 
-        \subsubsection{只有 Abel 群的阶}
-
             \begin{thm}
                 {素数阶群同构于循环群}
                 设 \(G\) 是一个素数阶的群, 则 \(G\cong (\Z_p, +)\), 其中 \(p=|G|\).\\
@@ -1242,8 +1240,6 @@
                 \end{enumerate}
             \end{ins}
 
-        \subsubsection{阶为 \(6\) 的群: 两种结构}
-
             \begin{ins}
                 {阶为 \(6\) 的群的结构}
                 设 \(G\) 是一个阶为 \(6\) 的群, 则 \(G\) 同构于以下两种结构之一: 
@@ -1268,25 +1264,10 @@
                 从而 \(A_4\) 没有阶为 \(6\) 的子群.
             \end{xmp}
 
-            \iffalse
-            \begin{ppt}
-                {三角形对称群 \(D_3\) 同构于 \(S_3\)}
-                具体来讲, 其结构为: \begin{enumerate}
-                    \item 恒等变换 \(e\);
-                    \item 旋转变换 \(r, r^2\);
-                    \item 反射变换 \(s, sr, sr^2\).
-                \end{enumerate}
-                其中 \(r\) 是以三角形的中心为轴的旋转变换, \(s\) 是以三角形的某条边为轴的反射变换. \(D_3\) 与 \(S_3\) 有相同的结构:
-                \[\{a,b: a^2=b^3=e, aba=b^{-1}\}\]
-            \end{ppt}
-            \fi
-
             \begin{ppt}
                 {\(A_3\) 同构于 \(\Z_3\)}
                 这是因为 \(A_3\) 中的全轮换恰好是交换的.
             \end{ppt}
-
-        \subsubsection{阶为 \(8\) 的群: 五种结构}
 
             \begin{xmp}
                 {交换 \(8\) 阶群的结构}
@@ -1332,8 +1313,6 @@
                 \end{enumerate}
             \end{rmk}
 
-        \subsubsection{阶为 \(10, 14\) 的群}
-
             \begin{thm}
                 {\(2p\) 阶非交换群同构于 \(D_p\)}
                 设 \(p\) 是一个素数, \(G\) 是一个阶为 \(2p\) 的非交换群. 则 \(G\cong D_p\).
@@ -1364,8 +1343,6 @@
                 设 \(p\) 是一个素数, 则 \(D_p\cong \Z_p\rtimes \Z_2\).\\
                 其中的 \(\Z_2\) 作用在 \(\Z_p\) 上的同态 \(\varphi\) 是唯一的, 将 \(\Z_2\) 中的非单位元素映射到 \(\Aut(\Z_p)\) 中的一个非平凡元素.
             \end{crl}
-
-        \subsubsection{阶为 \(12\) 的群}
 
             \begin{xmp}
                 {交换 \(12\) 阶群的结构}
@@ -1410,8 +1387,6 @@
                     \item \(A_4\): \((\Z_2\oplus\Z_2)\rtimes\Z_3\), 
                 \end{enumerate}
             \end{xmp}
-
-        \subsubsection{阶为 \(16\) 的群}
 
             \begin{ins}
                 {交换 \(16\) 阶群的结构}
@@ -1678,6 +1653,10 @@
             由于环并不要求乘法交换, 所以定义中, 如果仅满足 \(ra\in I\), 称之为\textbf{左理想}; 如果仅满足 \(ar\in I\), 称之为\textbf{右理想}; 如果同时满足 \(ra\in I\) 和 \(ar\in I\), 则称之为\textbf{双边理想}.
         \end{rmk}
 
+        \begin{ppt}
+            {含幺理想必定是平凡理想}
+        \end{ppt}
+
         \begin{dfn}
             {商环}
             [Quotient Ring]
@@ -1766,3 +1745,405 @@
             设 \(I\subseteq J\) 是环 \(R\) 的两个理想, 则
             \[(R/I)/(J/I)\cong R/J.\]
         \end{crl}
+
+        \begin{xmp}
+            {理想的积}
+            [Product of Ideals]
+            设 \(R\) 是一个环, \(I,J\) 是 \(R\) 的两个理想, 则 \(I\) 和 \(J\) 的积定义为
+            \[IJ=\left\{\sum_{i=1}^{n} a_i b_i: n\in\N, a_i\in I, b_i\in J\right\}.\]
+            并且 \(IJ\) 也是 \(R\) 的理想.
+        \end{xmp}
+
+        \begin{xmp}
+            {理想的和}
+            [Sum of Ideals]
+            设 \(R\) 是一个环, \(I,J\) 是 \(R\) 的两个理想, 则 \(I\) 和 \(J\) 的和定义为
+            \[I+J=\{a+b: a\in I, b\in J\}.\]
+            并且 \(I+J\) 也是 \(R\) 的理想.
+        \end{xmp}
+
+        \begin{ins}
+            {\(\Z\) 的理想}
+            \(\Z\) 的理想有以下两种结构:
+            \begin{enumerate}
+                \item 平凡理想: \(\{0\}\) 和 \(\Z\) 本身;
+                \item \(n\Z=\{nk: k\in\Z\}\), 其中 \(n\in\N^+\).
+            \end{enumerate}
+        \end{ins}
+
+    \subsection{环的基本性质}
+
+        \begin{dfn}
+            {环的特征}
+            [Characteristic of a Ring]
+            设 \(R\) 是一个环, 定义 \(R\) 的\textbf{特征} (characteristic) 为
+            \[\chara R:=\min\{m: \forall r\in R, mr=0\}\]
+            若不存在这样的 \(m\), 则定义 \(\chara R=0\).
+        \end{dfn}
+
+        \begin{ins}
+            {\(\Z\) 和 \(\Z_n\) 的特征}
+            \(\chara \Z=0\), \(\chara \Z_n=n\).
+        \end{ins}
+
+        \begin{ppt}
+            {整环的特征}
+            \(R\) 是整环, 则 \(\chara R\) 要么是 \(0\), 要么是一个素数 \(p\). \\
+            这是因为如果 \(\chara R=m>0\), 则对于 \(r\in R\), \(mr=0\). 如果 \(m\) 不是素数, 则存在 \(1<m'<m\) 使得 \(m'\mid m\), 则 \(R\) 中必然有同构于 \(\Z_{m'}\) 的子环, 说明 \(R\) 中有零因子. 矛盾.
+        \end{ppt}
+
+        \begin{thm}
+            {素特征交换环中的二项式定理}
+            设 \(R\) 是交换环且 \(\chara R=p\) 是素数, 则 \(\forall a,b\in R\), 有
+            \[(a+b)^p=a^p+b^p.\]
+            \[(a+b)^{p^n}=a^{p^n}+b^{p^n}.\]
+        \end{thm}
+
+        \begin{dfn}
+            {整环的分式域}
+            [Fraction Field of an Integral Domain]
+            设 \(D\) 是整环, \(D^*:=D\setminus\{0\}\), 定义集合
+            \[D\times D^*:= \{(a,b): a\in D, b\in D^*\}\]
+            定义等价关系
+            \[(a,b)\sim (c,d)\iff ad=bc.\]
+            定义加法
+            \[(a,b)+(c,d)=(ad+bc, bd)\]
+            定义乘法
+            \[(a,b)(c,d)=(ac, bd)\]
+            则商集 \((D\times D^*)/\sim\) 在上述加法和乘法下构成一个域, 叫做 \(D\) 的\textbf{分式域}, 记作 \(\mathrm{Frac}(D)\). 映射
+            \[f: D\to \mathrm{Frac}(D), \quad a\mapsto (a,1)\]
+            是一个环单同态.
+        \end{dfn}
+
+        \begin{ins}
+            {\(\Q\) 是 \(\Z\) 的分式域}
+        \end{ins}
+
+        \begin{dfn}
+            {环的直积}
+            [Direct Product of Rings]
+            设 \(R_1, R_2, \cdots, R_n\) 是 \(n\) 个环, 定义集合
+            \[R_1\times R_2\times\cdots\times R_n=\{(r_1,r_2,\cdots,r_n): r_i\in R_i, i=1,2,\cdots,n\}\]
+            加法定义为
+            \[(r_1,r_2,\cdots,r_n)+(s_1,s_2,\cdots,s_n)=(r_1+s_1, r_2+s_2, \cdots, r_n+s_n)\]
+            乘法定义为
+            \[(r_1,r_2,\cdots,r_n)(s_1,s_2,\cdots,s_n)=(r_1 s_1, r_2 s_2, \cdots, r_n s_n)\]
+            则 \(R_1\times R_2\times\cdots\times R_n\) 在上述加法和乘法下构成一个环, 叫做 \(R_1, R_2, \cdots, R_n\) 的\textbf{直积}.
+        \end{dfn}
+
+        \begin{thm}
+            {环论视角下的中国剩余定理}
+            设 \(R\) 是一个环, \(I_1, I_2, \cdots, I_n\) 是 \(R\) 的 \(n\) 个理想, 且 \(I_i+I_j=R\) 对于 \(i\neq j\) 都成立, 则
+            \[R/(I_1\cap I_2\cap\cdots\cap I_n)\cong R/I_1\times R/I_2\times\cdots\times R/I_n.\]
+        \end{thm}
+
+        \begin{crl}
+            {\(\Z\) 上的中国剩余定理}
+            设 \(m_1, \cdots, m_n\) 是两两互素的正整数, 则
+            \[\Z/(m_1 m_2 \cdots m_n)\cong \Z/m_1\Z\times \Z/m_2\Z\times\cdots\times \Z/m_n\Z.\]
+        \end{crl}
+
+        \begin{crl}
+            {同余视角下的中国剩余定理}
+            设 \(m_1, \cdots, m_n\) 是两两互素的正整数, 则对于任意 \(a_1, a_2, \cdots, a_n\in\Z\), 同余方程
+            \[x\equiv a_i \pmod{m_i}, \quad i=1,2,\cdots,n\]
+            有整数解, 并且任意两个解 \(x,y\) 满足 \(x\equiv y \pmod{m_1 m_2 \cdots m_n}\).
+        \end{crl}
+
+        \begin{dfn}
+            {素理想}
+            [Prime Ideal]
+            定义环 \(R\) 的理想 \(P\neq R\) 为素理想, 当且仅当对任意两个理想 $A,B$, \(AB\subseteq P\implies A\subseteq P\lor B\subseteq P\).
+        \end{dfn}
+
+        \begin{crl}
+            {含幺交换环的素理想}
+            设 \(R\) 是含幺的交换环, \(P\) 是理想, 则下列条件等价:
+            \begin{enumerate}[label=(\arabic*)]
+                \item \(P\) 是素理想;
+                \item \(\forall a,b\in R, ab\in P\implies a\in P\lor b\in P\);
+                \item \(R/P\) 是整环.
+            \end{enumerate}
+        \end{crl}
+
+        \begin{dfn}
+            {极大理想}
+            [Maximal Ideal]
+            定义环 \(R\) 的理想 \(M\neq R\) 为极大理想, 当且仅当对任意理想 \(N\), \(M\subseteq N\subseteq R\implies N=R\lor N=M\).
+        \end{dfn}
+
+        \begin{crl}
+            {含幺交换环对极大理想的商环是域}
+            若环 \(R\) 的理想 \(M\) 为极大理想, 则 \(R/M\) 是域.\\
+            由于域一定是整环, 所以极大理想一定是素理想.
+        \end{crl}
+
+    \subsection{交换环上的因子分解}
+
+        \begin{dfn}
+            {不可约元}
+            [Irreducible Element]
+            定义整环 \(D\) 中的元素 \(r\neq 0\) 是不可约元, 当且仅当 \(r\) 不是单位, \(\not\exists p\in D\) s.t. \(p\mid r\).
+        \end{dfn}
+
+        \begin{dfn}
+            {相伴元素}
+            设 \(D\) 是整环. \(p,q\in D\), 定义 \(p,q\) 是相伴的, 当且仅当 \(\exists\,u\in U(D)\), s.t. \(p=uq\). 记作 \(p\sim q\).
+        \end{dfn}
+
+        \begin{dfn}
+            {素元}
+            [Prime Element]
+            定义整环 \(D\) 中的元素 \(p\neq 0\) 是一个素元, 当且仅当 \(p\) 不是单位且 \(p\mid ab\implies p\mid a\lor p\mid b\).
+        \end{dfn}
+
+        \begin{ppt}
+            {整环中的素元是不可约元}
+        \end{ppt}
+
+        \begin{ppt}
+            {素元可以生成素理想}
+            设 \(R\) 是整环, \(p\in R, p\neq 0\), \(p\) 是素元当且仅当 \(\left\langle p\right\rangle \) 是素理想.
+        \end{ppt}
+
+        \begin{dfn}
+            {唯一因子分解整环}
+            [Unique Factorial Domain, UFD]
+            定义整环 \(R\) 是唯一因子分解整环, 当且仅当满足下两个条件:
+            \begin{enumerate}
+                \item \textbf{存在性}: 每个非零的非单位的元素都可以表示为有限个不可约元的乘积;
+                \item \textbf{唯一性}: 该表示方法在不考虑顺序下是唯一的.
+            \end{enumerate}
+        \end{dfn}
+
+        \begin{ppt}
+            {UFD 中的不可约元等价于素元}
+        \end{ppt}
+
+        \begin{thm}
+            {UFD 中不存在无限长的因子链}
+            [No Infinite Factorization Chains in UFD]
+            设 \(R\) 是一个唯一因子分解整环, 则不存在无限个不相伴的 \(a_i\) 使得 \(a_{i+1}\mid a_i\).
+        \end{thm}
+
+        \begin{dfn}
+            [GCD]
+            {最大公约元}
+            [Greatest Common Divisor]
+            设 \(R\) 是一个整环, \(a,b\in R\), 定义 \(d\in R\) 是 \(a\) 和 \(b\) 的一个\textbf{最大公约元}, 当且仅当满足下列条件:
+            \begin{enumerate}
+                \item 公因子: 即 \(d\mid a\) 且 \(d\mid b\);
+                \item 极大性: 对于 \(a\) 和 \(b\) 的任意一个公因子 \(c\), 都有 \(c\mid d\).
+            \end{enumerate}
+            记作 \(\gcd(a,b)\).
+        \end{dfn}
+
+        \begin{dfn}
+            {互素}
+            [Coprime]
+            设 \(R\) 是一个整环, \(a,b\in R\), 定义 \(a\) 和 \(b\) 是\textbf{互素(coprime)}的, 当且仅当 \(\gcd(a,b)\sim 1\).
+        \end{dfn}
+
+        \begin{dfn}
+            [LCM]
+            {最小公倍元}
+            [Least Common Multiple]
+            设 \(R\) 是一个整环, \(a,b\in R\), 定义 \(m\in R\) 是 \(a\) 和 \(b\) 的一个\textbf{最小公倍元}, 当且仅当满足下列条件:
+            \begin{enumerate}
+                \item 倍数: 即 \(a\mid m\) 且 \(b\mid m\);
+                \item 最小性: 对于 \(a\) 和 \(b\) 的任意一个公倍元 \(n\), 都有 \(m\mid n\).
+            \end{enumerate}
+            记作 \(\lcm(a,b)\).
+        \end{dfn}
+
+        \begin{dfn}
+            {GCD 整环}
+            [GCD Domain]
+            定义整环 \(R\) 是一个\textbf{GCD 整环 (GCDD)}, 当且仅当 \(\forall\, a,b\in R\), \(\exists \gcd(a,b)\in R\).
+        \end{dfn}
+
+        \begin{ppt}
+            {最大公约元和最小公倍元的基本性质}
+            设 \(R\) 是一个整环, \(a,b,c\in R\setminus\{0\}\) 且 \(\gcd(a,b)\) 存在, 则\\
+            (1) \(c\gcd(a,b)\sim \gcd(ca,cb)\);\\
+            (2) \(\gcd(a,b)\sim 1, \gcd(a,c)\sim 1\implies \gcd(a,bc)\sim 1\)
+        \end{ppt}
+
+        \begin{ppt}
+            {GCD 整环中最大公约元和最小公倍元的性质}
+            设 \(R\) 是一个GCD 整环, \(\forall\, a,b\in R\setminus\{0\}\), 则\\
+            (1) \(\gcd(a,b)\) 与 \(\lcm(a,b)\) 都存在;\\
+            (2) \(a\cdot b\sim \gcd(a,b)\cdot \lcm(a,b)\).
+        \end{ppt}
+
+        \begin{ppt}
+            {UFD 是 GCD 整环}
+            设 \(R\) 是一个唯一因子分解整环, 则 \(R\) 是一个 GCD 整环.
+        \end{ppt}
+
+        \begin{thm}
+            {UFD 的等价定义}
+            设 \(R\) 是一个整环, 则下列条件等价:
+            \begin{enumerate}
+                \item \(R\) 是 UFD;
+                \item \(R\) 中不存在无限长的因子链且每个不可约元都是素元;
+                \item \(R\) 中不存在无限长的因子链且是 GCD 整环.
+            \end{enumerate}
+        \end{thm}
+
+        \begin{thm}
+            {PID 是 UFD}
+            设 \(R\) 是一个主理想整环, 则 \(R\) 是一个唯一因子分解整环.
+        \end{thm}
+
+        \begin{prf}
+            我们只需要证明: \\
+            (1) \(R\) 中不存在无限长的因子链: 若存在一列无限长的因子链 \(a_1,a_2,\cdots,a_n,\cdots\), 则生成的理想 \(\expval{a_1}\subseteq\expval{a_2}\cdots\expval{a_n}\cdots \).\\
+            根据 PID 中一列理想的并仍是理想, 可知 \(\bigcup_{n=1}^{\infty} \expval{a_n}\) 是 \(R\) 的一个理想, 记作 \(I\). 则令 \(I=\expval{a}\), \(\exists\,a\in I\). 这就说明了这一列理想必然在某个位置稳定下来. 从而是有限的.\\
+            (2) \(R\) 是 GCDD: 可以证明 \(\expval{a}+\expval{b}=\expval{d}\), 其中 \(d\) 是 \(a\) 和 \(b\) 的一个最大公约元. 从而 \(R\) 是 GCD 整环. 
+        \end{prf}
+
+        \begin{dfn}
+            {Euclid 整环}
+            [Euclidean Domain]
+            定义整环 \(R\) 是 \textbf{Euclid 整环 (ED)}, 当且仅当 \(\exists\,\phi:R\to\N\), 使得:
+            \begin{enumerate}
+                \item \(\phi(a)=0\) iff \(a=0\);
+                \item \(\forall\,a,b\in R\) 且 \(b\neq 0\), 存在 \(q,r\in R\) 使得 \(a=bq+r\) 且 \(\phi(r)<\phi(b)\).
+            \end{enumerate}
+            称 \(\phi\) 是 \(R\) 的一个\textbf{Euclid 函数}.
+        \end{dfn}
+
+        \begin{ppt}
+            {域是 Euclid 整环}
+            设 \(R\) 是一个域, 则 \(R\) 是一个 Euclid 整环.\\
+            定义 Euclid 函数为 \(\phi(0)=0\), \(\forall\,x\in R\setminus\{0\}\), \(\phi(x)=1\).
+        \end{ppt}
+
+        \begin{thm}
+            {Euclid 整环是 PID}
+            设 \(R\) 是一个 Euclid 整环, 则 \(R\) 是一个主理想整环.
+        \end{thm}
+
+        \begin{prf}
+            我们只需证明所有理想都是主理想:\\
+            令 \(\phi\) 是 \(R\) 上的 Euclid 函数. \(I\) 是任意一个理想. \\
+            若 \(\phi(I)=0\), 则 \(I=\expval{0}\);\\
+            若 \(\phi(I)\neq 0\), 则设 \(n=\min \phi(I)\), \(\exists\,b\in I\) s.t. \(\phi(b)=n\). 设 \(a\in I\), 则 \(a=bq+r\) 且 \(\phi(r)<\phi(b)\). 由于 \(r=a-bq\in I\), 根据 \(\phi(b)\) 的定义, 可知 \(r=0\). 从而 \(a\in \expval{b}\). 这就说明了 \(I=\expval{b}\) 是一个主理想.
+        \end{prf}
+        
+        \begin{rmk}
+            由上述讨论可知:
+            \[\text{域}\implies \text{ED} \implies \text{PID}\implies \text{UFD}\implies \text{GCDD}\implies\text{整环}. \]
+            列表比较, 如下:
+            \begin{center}
+            \begin{tabular}{c|c|c}
+                \toprule
+                步骤 & 新增性质 & 反例 \\
+                \midrule
+                整环 \(\to\) GCDD & 存在 GCD & \(\Z[\sqrt{-5}]\) \\
+                GCDD \(\to\) UFD & 因子链是有限长的 & 复平面上的整函数环 \\
+                UFD \(\to\) PID & 每个理想都是主理想 & \(\Z[x]\) \\
+                PID \(\to\) ED & 存在带余除法 &  \\
+                ED \(\to\) 域 & 存在除法 & \(\Z\) \\
+                \bottomrule
+            \end{tabular}
+            \end{center}
+        \end{rmk}
+
+\section{域扩张与 Galois 理论}
+
+    \subsection{环的多项式环}
+
+    \subsection{域扩张}
+
+        \begin{dfn}
+            {扩域}
+            [Field Extension]
+            设 \(F,K\) 是两个域, 若 \(K\) 是 \(F\) 的子域, 则称 \(K\) 是 \(F\) 的一个\textbf{扩域}.\\
+            常把这样的扩域记作 \(F/K\).
+        \end{dfn}
+
+        \begin{dfn}
+            {生成子域}
+            [Generated Subfield]
+            设 \(F/K\) 是扩域, \(S\subseteq F\) 定义
+            \[\bigcap_{\substack{L\supseteq (K\cup S)}} L\]
+            是 \(F\) 中包含 \(S\) 的所有子域的交集形成的域, 称为 \(S\) 在 \(K\) 上的\textbf{生成子域}, 记作 \(K(S)\).
+        \end{dfn}
+        \begin{dfn}
+            {生成子环}
+            [Generated Subring]
+            设 \(F/K\) 是扩域, \(S\subseteq F\), 定义
+            \[\bigcap_{R\supseteq (K\cup S)} R\]
+            是 \(F\) 中包含 \(S\) 的所有子环的交集形成的环, 称为 \(S\) 在 \(K\) 上的\textbf{生成子环}, 记作 \(K[S]\).
+        \end{dfn}
+
+        \begin{ppt}
+            {生成子域是生成子环的分式域}
+        \end{ppt}
+
+        \begin{dfn}
+            {有限生成扩张}
+            [Finite Extension]
+            定义 \(K\) 的扩张是有限生成扩张, 当且仅当生成子域 \(K(S)\) 由有限个元素生成.
+        \end{dfn}
+
+        \begin{dfn}
+            {单扩张}
+            [Simple Extension]
+            定义 \(K\) 的扩张是有限扩张, 当且仅当生成子域 \(K(S)\) 由单个元素 \(S:=\{a\}\) 生成. 这时记作 \(K(a)\). 
+        \end{dfn}
+
+        \begin{ppt}
+            {生成子环与多项式环的关系}
+            设 \(F/K\) 是扩域, \(S=\{a_1,a_2,\cdots,a_n\}\subseteq F\), 则 \(K[S]\) 与 \(K[x_1,x_2,\cdots,x_n]/I\) 同构, 其中 \(I\) 是 \(K[x_1,x_2,\cdots,x_n]\) 中的一个理想, 满足 \(\forall f(x_1,x_2,\cdots,x_n)\in I, f(a_1,a_2,\cdots,a_n)=0\).\\
+            特别地有:
+            \[K[a]=\{f(a): f(x)\in K[x]\}\]
+            \[K[a_1,a_2,\cdots,a_n] = \{f(a_1,a_2,\cdots,a_n): f(x_1,x_2,\cdots,x_n)\in K[x_1,x_2,\cdots,x_n]\}\]
+        \end{ppt}
+
+        \begin{dfn}
+            {代数元 \& 超越元}
+            [Algebraic Element \& Transcendental Element]
+            设 \(F/K\) 是扩域, \(a\in F\), 定义 \(a\) 是 \(K\) 上的一个\textbf{代数元}, 当且仅当 \(\exists\,f(x)\in K[x]\setminus\{0\}\) s.t. \(f(a)=0\). \\
+            定义 \(a\) 是 \(K\) 上的一个\textbf{超越元}, 当且仅当 \(a\) 不是 \(K\) 上的代数元.
+        \end{dfn}
+
+        \begin{dfn}
+            {代数扩张 \& 超越扩张}
+            [Algebraic Extension \& Transcendental Extension]
+            设 \(F/K\) 是扩域, 定义 \(F\) 是 \(K\) 上的一个\textbf{代数扩张}, 当且仅当 \(F\) 中的每个元素都是 \(K\) 上的代数元. 定义 \(F\) 是 \(K\) 上的一个\textbf{超越扩张}, 当且仅当 \(F\) 中存在 \(K\) 上的超越元.
+        \end{dfn}
+
+        \begin{thm}
+            {域扩张作为向量空间}
+            设 \(F/K\) 是扩域, 则 \(F\) 是 \(K\) 上的一个向量空间:
+            \begin{enumerate}
+                \item \textbf{加法}: \(F\) 中自然存在加法;
+                \item \textbf{数乘}: \(F\) 中的元素乘 \(K\) 中的元素仍然在 \(F\) 中.
+            \end{enumerate}
+            则 \(F\) 在 \(K\) 上扩张的次数定义为 \(F\) 作为 \(K\) 上的向量空间的维数 \(\dim_K(F)\) , 记作 \([F:K]\).
+        \end{thm}
+
+        \begin{thm}
+            {超越扩张的同构}
+            [Isomorphism of Transcendental Extensions]
+            设 \(F/K\) 是超越扩张且 \(u\in F\) 是超越元, 则:
+            \begin{enumerate}
+                \item 多项式环 \(K[x]\) 同构于 \(K[u]\), 分式域 \(K(x)\) 同构于 \(K(u)\);
+                \item \(K(u)\) 是 \(K\) 上的一个超越扩张.
+            \end{enumerate}
+        \end{thm}
+
+        \begin{thm}
+            {代数扩张的同构}
+            [Isomorphism of Algebraic Extensions]
+            设 \(F/K\) 是代数扩张且 \(u\in F\), 则:
+            \begin{enumerate}
+                \item \(K(u)=K[u]\);
+                \item \(K(u)\) 是 \(K\) 的代数扩张;
+                \item 存在唯一的首 1 多项式 \(m(x)\in K[x]\) 使得 \(\deg m\geq 1\), \(m(u)=0\), \(K(u)\cong K[x]/\expval{m(x)} \);
+                \item \(\dim_K (K(x)) = \deg m\), \(1, u, u^2, \cdots, u^{\deg m-1}\) 是 \(K(u)\) 的一组基.
+            \end{enumerate}
+        \end{thm}
