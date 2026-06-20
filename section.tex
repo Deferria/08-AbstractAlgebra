@@ -912,8 +912,7 @@
             [Burnside's Lemma]
             [Dedicatia]
             设 \(G \curvearrowright X\), 则 \(G\) 在 \(X\) 上的轨道数为
-            \[|X|=\frac{1}{|G|}\sum_{g\in G}|\chi(g)|.\]
-            其中 \(\chi(g)=\{x\in X: g.x=x\}\) 是 \(g\) 的不动点集.
+            \[|X|=\frac{1}{|G|}\sum_{g\in G}|\card\{x\in X: g.x=x\}|.\]w
         \end{thm}
 
         \begin{rmk}
@@ -1774,6 +1773,7 @@
     \subsection{环的基本性质}
 
         \begin{dfn}
+            [Characteristic]
             {环的特征}
             [Characteristic of a Ring]
             设 \(R\) 是一个环, 定义 \(R\) 的\textbf{特征} (characteristic) 为
@@ -1800,6 +1800,7 @@
         \end{thm}
 
         \begin{dfn}
+            [Fraction-Field]
             {整环的分式域}
             [Fraction Field of an Integral Domain]
             设 \(D\) 是整环, \(D^*:=D\setminus\{0\}\), 定义集合
@@ -1810,8 +1811,8 @@
             \[(a,b)+(c,d)=(ad+bc, bd)\]
             定义乘法
             \[(a,b)(c,d)=(ac, bd)\]
-            则商集 \((D\times D^*)/\sim\) 在上述加法和乘法下构成一个域, 叫做 \(D\) 的\textbf{分式域}, 记作 \(\mathrm{Frac}(D)\). 映射
-            \[f: D\to \mathrm{Frac}(D), \quad a\mapsto (a,1)\]
+            则商集 \((D\times D^*)/\sim\) 在上述加法和乘法下构成一个域, 叫做 \(D\) 的\textbf{分式域}, 记作 \(\Frac(D)\). 映射
+            \[f: D\to \Frac(D), \quad a\mapsto (a,1)\]
             是一个环单同态.
         \end{dfn}
 
@@ -1878,7 +1879,7 @@
             由于域一定是整环, 所以极大理想一定是素理想.
         \end{crl}
 
-    \subsection{交换环上的因子分解}
+    \subsection{唯一因子分解整环}
 
         \begin{dfn}
             {不可约元}
@@ -1887,7 +1888,9 @@
         \end{dfn}
 
         \begin{dfn}
+            [Associate]
             {相伴元素}
+            [Associate Elements]
             设 \(D\) 是整环. \(p,q\in D\), 定义 \(p,q\) 是相伴的, 当且仅当 \(\exists\,u\in U(D)\), s.t. \(p=uq\). 记作 \(p\sim q\).
         \end{dfn}
 
@@ -2051,13 +2054,95 @@
             \end{center}
         \end{rmk}
 
-\section{域扩张与 Galois 理论}
-
     \subsection{环的多项式环}
+
+        \begin{dfn}
+            {一元多项式环}
+            [Polynomial Ring]
+            设 \(R\) 是一个环, 定义 \(R\) 上的\textbf{一元多项式环} \(R[x]\) 为
+            \[R[x]=\left\{\sum_{i=0}^{n} a_i x^i: n\in\N, a_i\in R\right\}\]
+            加法定义为
+            \[\left(\sum_{i=0}^{n} a_i x^i\right)+\left(\sum_{i=0}^{m} b_i x^i\right)=\sum_{i=0}^{\max(n,m)} (a_i+b_i)x^i,\]
+            其中 \(a_i=0\) 当 \(i>n\), \(b_i=0\) 当 \(i>m\).\\
+            乘法定义为
+            \[\left(\sum_{i=0}^{n} a_i x^i\right)\left(\sum_{j=0}^{m} b_j x^j\right)=\sum_{k=0}^{n+m}\left(\sum_{i+j=k} a_i b_j \right)x^k.\]
+            则 \(R[x]\) 在上述加法和乘法下构成一个环.
+        \end{dfn}
+
+        \begin{dfn}
+            {多项式的根 / 零点}
+            [Root / Zero of a Polynomial]
+            设 \(R\) 是一个环, \(f(x)\in R[x]\), 定义 \(a\in R\) 是 \(f(x)\) 的一个\textbf{根} (root) 或 \textbf{零点} (zero), 当且仅当 \(f(a)=0\).
+        \end{dfn}
+
+        \begin{dfn}
+            {多项式的次数}
+            [Degree of a Polynomial]
+            设 \(R\) 是一个环, \(f(x)=a_n x^n + a_{n-1} x^{n-1} + \cdots + a_0\in R[x]\) 且 \(a_n\neq 0\), 定义 \(f(x)\) 的\textbf{次数}为 \(n\), 记作 \(\deg f(x)=n\). \\
+            另外定义零多项式的次数为 \(-\infty\).
+        \end{dfn}
+
+        \begin{rmk}
+            需要注意的是, 若 \(R\) 不是交换环, 即使有 \(f(x)=g(x)h(x)\), 也不一定有 \(f(a)=g(a)h(a)\), \(\forall\,a\in R\).
+        \end{rmk}
+
+        \begin{thm}
+            {整环的一元多项式环是整环}
+            设 \(R\) 是一个整环, 则 \(R[x]\) 是一个整环.
+        \end{thm}
+
+        \begin{thm}
+            {多项式环上的带余除法}
+            设 \(R\) 是含幺环, \(f(x), g(x)\in R[x]\) 且 \(g(x)\) 的首项系数是 \(R\) 中的一个单位, 则存在 \(q(x), r(x)\in R[x]\) 使得
+            \[f(x)=g(x)q(x)+r(x)\]
+            且 \(\deg r(x)<\deg g(x)\).
+        \end{thm}
+
+        \begin{thm}
+            {多项式的余数定理}
+            设 \(R\) 是含幺环, \(f(x)\in R[x]\), 则对于任意 \(a\in R\), \(f(x)\) 除以 \(x-a\) 的余数为 \(f(a)\). 即
+            \[f(x)=(x-a)q(x)+f(a)\]
+            其中 \(q(x)\in R[x]\).
+        \end{thm}
+
+        \begin{ppt}
+            {域的一元多项式环是 Euclid 整环}
+        \end{ppt}
+
+        \begin{dfn}
+            {多项式的容量}
+            [Content of a Polynomial]
+            设 \(R\) 是一个整环, \(f(x)=a_n x^n + a_{n-1} x^{n-1} + \cdots + a_0\in R[x]\), 定义 \(f(x)\) 的\textbf{容量}为 \(\gcd(a_n, a_{n-1}, \cdots, a_0)\). 记作 \(\Cont(f(x))\).
+        \end{dfn}
+
+        \begin{thm}
+            {Gauss 引理}
+            设 \(R\) 是一个唯一因子分解整环, \(f(x), g(x)\in R[x]\), 则
+            \[\Cont(f(x)g(x))\sim \Cont(f(x))\cdot \Cont(g(x)).\]
+        \end{thm}
+
+        \begin{thm}
+            {UFD 上的多项式环也是 UFD}
+            设 \(R\) 是一个唯一因子分解整环, 则 \(R[x]\) 是一个唯一因子分解整环. 
+        \end{thm}
+
+        \begin{thm}
+            {Eisenstein 判别法}
+            设 \(R\) 是一个唯一因子分解整环, \(f(x)=a_n x^n + a_{n-1} x^{n-1} + \cdots + a_0\in R[x]\), 则如果存在 \(R\) 中的一个素元 \(p\) 满足:
+            \begin{enumerate}
+                \item \(p\mid a_i\) 对于 \(i=0,1,\cdots,n-1\) 都成立;
+                \item \(p\nmid a_n\);
+                \item \(p^2\nmid a_0\);
+            \end{enumerate}
+            则 \(f(x)\) 是 \(R\) 上的一个不可约多项式.
+        \end{thm}
+
+\section{域扩张与 Galois 理论}
 
     \subsection{域扩张}
 
         \begin{dfn}
+            [Field-Extension]
             {扩域}
             [Field Extension]
             设 \(F,K\) 是两个域, 若 \(K\) 是 \(F\) 的子域, 则称 \(K\) 是 \(F\) 的一个\textbf{扩域}.\\
@@ -2065,6 +2150,7 @@
         \end{dfn}
 
         \begin{dfn}
+            [Generated-Subfield]
             {生成子域}
             [Generated Subfield]
             设 \(F/K\) 是扩域, \(S\subseteq F\) 定义
@@ -2072,6 +2158,7 @@
             是 \(F\) 中包含 \(S\) 的所有子域的交集形成的域, 称为 \(S\) 在 \(K\) 上的\textbf{生成子域}, 记作 \(K(S)\).
         \end{dfn}
         \begin{dfn}
+            [Generated-Subring]
             {生成子环}
             [Generated Subring]
             设 \(F/K\) 是扩域, \(S\subseteq F\), 定义
@@ -2116,6 +2203,10 @@
             设 \(F/K\) 是扩域, 定义 \(F\) 是 \(K\) 上的一个\textbf{代数扩张}, 当且仅当 \(F\) 中的每个元素都是 \(K\) 上的代数元. 定义 \(F\) 是 \(K\) 上的一个\textbf{超越扩张}, 当且仅当 \(F\) 中存在 \(K\) 上的超越元.
         \end{dfn}
 
+        \begin{ins}
+            {\(\R\) 是 \(\Q\) 的一个超越扩张}
+        \end{ins}
+
         \begin{thm}
             {域扩张作为向量空间}
             设 \(F/K\) 是扩域, 则 \(F\) 是 \(K\) 上的一个向量空间:
@@ -2126,15 +2217,39 @@
             则 \(F\) 在 \(K\) 上扩张的次数定义为 \(F\) 作为 \(K\) 上的向量空间的维数 \(\dim_K(F)\) , 记作 \([F:K]\).
         \end{thm}
 
+        \begin{ppt}
+            {扩张的塔性质}
+            设 \(F/E\), \(E/K\) 都是域扩张, 则 \(F/K\) 也是域扩张, 且 
+            \[[F:K]=[F:E][E:K].\]
+        \end{ppt}
+
         \begin{thm}
             {超越扩张的同构}
             [Isomorphism of Transcendental Extensions]
             设 \(F/K\) 是超越扩张且 \(u\in F\) 是超越元, 则:
             \begin{enumerate}
                 \item 多项式环 \(K[x]\) 同构于 \(K[u]\), 分式域 \(K(x)\) 同构于 \(K(u)\);
-                \item \(K(u)\) 是 \(K\) 上的一个超越扩张.
+                \item \(\dim_K(K(u)) = \infty\).
             \end{enumerate}
         \end{thm}
+
+        \begin{dfn}
+            [Minimal-Polynomial]
+            {极小多项式}
+            [Minimal Polynomial]
+            设 \(F/K\) 是扩域, \(u\in F\) 是 \(K\) 上的一个代数元, 定义 \(u\) 的\textbf{极小多项式}为 \(K[x]\) 中满足下列条件的首 1 多项式:
+            \begin{enumerate}
+                \item \(m(x)\in K[x]\setminus\{0\}\);
+                \item \(m(u)=0\);
+                \item \(\deg m\) 是满足上述条件的多项式中最小的.
+            \end{enumerate}
+        \end{dfn}
+
+        \begin{dfn}
+            {代数次数}
+            [Algebraic Degree]
+            设 \(F/K\) 是扩域, \(u\in F\) 是 \(K\) 上的一个代数元, 其极小多项式为 \(m(x)\), 则定义 \(u\) 的\textbf{代数次数}为 \(\deg m\).
+        \end{dfn}
 
         \begin{thm}
             {代数扩张的同构}
@@ -2143,7 +2258,182 @@
             \begin{enumerate}
                 \item \(K(u)=K[u]\);
                 \item \(K(u)\) 是 \(K\) 的代数扩张;
-                \item 存在唯一的首 1 多项式 \(m(x)\in K[x]\) 使得 \(\deg m\geq 1\), \(m(u)=0\), \(K(u)\cong K[x]/\expval{m(x)} \);
-                \item \(\dim_K (K(x)) = \deg m\), \(1, u, u^2, \cdots, u^{\deg m-1}\) 是 \(K(u)\) 的一组基.
+                \item 存在唯一的极小多项式 \(m(x)\in K[x]\) 使得 \(K(u)\cong K[x]/\expval{m(x)} \);
+                \item \(\dim_K (K(u)) = \deg m\), \(1, u, u^2, \cdots, u^{\deg m-1}\) 是 \(K(u)\) 的一组基.
             \end{enumerate}
         \end{thm}
+
+        \begin{ppt}
+            {域的有限扩张必定是有限生成代数扩张}
+        \end{ppt}
+
+        \begin{cxmp}
+            {代数扩张不一定是有限扩张, 无限扩张不一定是超越扩张}
+            定义 \(\Q\) 上的所有代数元的集合为 \(\A\), 则 \(\A\) 是 \(\Q\) 上的一个代数扩张, 但 \(\dim_{\Q}(\A)=\infty\).
+        \end{cxmp}
+
+        \begin{thm}
+            {存在单扩张使得某个元素成为代数元}
+            设 \(K\) 是域, \(f(x)\in K[x]\). \(\deg f:=n\geq 1\), 存在 \(K\) 的单扩张 \(K(u)\) 使得 \(u\) 是 \(f(x)\) 的一个根:\\
+            若 \(\dim_{K} (K(u))=n\), 则 \(f(x)\) 是 \(K\) 上的一个不可约多项式.
+        \end{thm}
+
+        \begin{dfn}
+            {代数闭域}
+            [Algebraically Closed Field]
+            定义域 \(K\) 是一个\textbf{代数闭域}, 当且仅当对任意扩域 \(F/K\) 中的元素 \(u\), \(u\) 都是 \(K\) 上的代数元.\\
+            等价地, \(K\) 是一个代数闭域, 当且仅当 \(K\) 上的每个非零多项式在 \(K\) 中都有根.
+        \end{dfn}
+
+        \begin{ins}
+            {\(\C\) 是代数闭域}
+        \end{ins}
+
+        \begin{dfn}
+            {代数闭包}
+            [Algebraic Closure]
+            设 \(K\) 是一个域, 定义 \(K\) 的\textbf{代数闭包}为 \(K\) 的一个扩域 \(\overline{K}\), 满足下列条件:
+            \begin{enumerate}
+                \item \(\overline{K}\) 是 \(K\) 上的一个代数扩张;
+                \item \(\overline{K}\) 是一个代数闭域.
+            \end{enumerate}
+        \end{dfn}
+
+    \subsection{分裂域}
+
+        \begin{dfn}
+            [galois-group]
+            {Galois 群}
+            [Galois Group]
+            设 \(F/K\) 是扩域, 定义 \(F\) 上的一个\textbf{Galois 群}为 \(F\) 上的一个自同构群
+            \[\Gal(F/K)=\{\sigma:F\to F, \sigma\mid_K=\Id_K\}\]
+            记作 \(\Gal(F/K)\).
+        \end{dfn}
+
+        \begin{dfn}
+            {分裂性}
+            [Splitting]
+            设 \(F/K\) 是扩域, \(f(x)\in K[x]\), 定义 \(f(x)\) 在 \(F\) 中是\textbf{分裂的}, 当且仅当 \(f(x)\) 可以表示为
+            \[f(x)=a(x-u_1)(x-u_2)\cdots(x-u_n)\]
+            其中 \(a\in K\setminus\{0\}\), \(u_1,u_2,\cdots,u_n\in F\) 是 \(f(x)\) 的 \(n\) 个根.
+        \end{dfn}
+
+        \begin{dfn}
+            {多项式的分裂域}
+            [Splitting Field]
+            设 \(F/K\) 是扩域, \(f(x)\in K[x]\), 定义 \(F\) 是 \(f(x)\) 的一个\textbf{分裂域}, 当且仅当满足下列条件:
+            \begin{enumerate}
+                \item \(f(x)\) 在 \(F\) 中是分裂的;
+                \item \(F\) 是 \(f(x)\) 的所有分裂域中包含最小的一个: \(F=K(u_1,u_2,\cdots,u_n)\).
+            \end{enumerate}
+        \end{dfn}
+
+        \begin{ins}
+            {分裂域的维数不一定等于多项式的次数}
+            设 \(\Q\) 的某个扩域 \(F\) 是 \(x^3-2\) 的分裂域. 则 \(\dim_{\Q}(F)=6\).\\
+            这是因为 \(x^3-2\) 的根是 \(\sqrt[3]{2}, \sqrt[3]{2}\omega, \sqrt[3]{2}\omega^2\), 所以 \(F=\Q(\sqrt[3]{2}, \omega)\):
+            \[[F:\Q] = [\Q(\sqrt[3]{2}, \omega): \Q(\sqrt[3]{2})]\cdot [\Q(\sqrt[3]{2}): \Q]=2\cdot 3=6 \]
+        \end{ins}
+
+        \begin{thm}
+            {分裂域的存在性}
+            设 \(K\) 是一个域, \(f(x)\in K[x]\), \(\deg f(x)\geq 1\), 则 \(f(x)\) 的分裂域存在.
+        \end{thm}
+
+        \begin{ppt}
+            {单扩域的 Galois 群的性质}
+            设 \(F\) 是域, \(u\) 是 \(F\) 上的代数元. \(f(x)\) 是 \(u\) 的极小多项式. 则 \(|\Gal(F(u)/F)|\) 等于 \(f(x)\) 在 \(F(u)\) 中的不同根的个数.\\
+            特别地, \(|\Ga(F(u)/F)|\leq[F(u):F]=\deg f(x)\). 等号可取到当且仅当 \(f\) 的所有根都在 \(F\) 中且 \(f\) 没有重根.
+        \end{ppt}
+
+        \begin{dfn}
+            {可分多项式}
+            [Separable Polynomial]
+            设 \(K\) 是域, \(f(x)\in K[x]\). 如果 \(f(x)\) 在其分裂域中没有重根, 则称 \(f(x)\) 是 \textbf{可分的}.
+        \end{dfn}
+
+        \begin{rmk}
+            判断多项式是否可分, 可以通过计算 \(f(x)\) 和形式导数 \(f'(x)\) 的最大公约数来判断. 若 \(\gcd(f(x), f'(x))=1\), 则 \(f(x)\) 是可分的; 若 \(\gcd(f(x), f'(x))\neq 1\), 则 \(f(x)\) 不是可分的.
+        \end{rmk}
+
+        \begin{thm}
+            {多项式的可分性不依赖域的选取}
+            设 \(f(x)\in K[x]\), 则 \(f(x)\) 是否可分不依赖于 \(K\) 的扩域的选取.
+        \end{thm}
+
+        \begin{thm}
+            {同构延拓定理}
+            设 \(\sigma:F\to F'\) 是域同构, \(f(x)\in F(x)\), \(E,E'\) 分别是 \(f(x)\) 在 \(F\) 上、\(\sigma(f(x))\) 在 \(F'\) 上的分裂域, 则 \(\sigma\) 可以延拓为 \(E\) 和 \(E'\) 之间的域同构.\\
+            这种延拓可能不唯一, 其个数不超过 \([E:F]\), 且等号可取到当且仅当 \(f(x)\) 的所有根都在 \(F\) 中且 \(f(x)\) 没有重根.
+        \end{thm}
+
+    \subsection{有限域的性质}
+
+        \begin{dfn}
+            {有限域 / Galois 域}
+            [Finite Field / Galois Field]
+            只有有限多个元素的域叫做\textbf{有限域} (finite field), 也叫做\textbf{Galois 域} (Galois field).
+        \end{dfn}
+
+        \begin{thm}
+            {有限域是 \(\Z_p\) 的扩域}
+            设 \(F\) 是有限域, \(|F|=p^n\), 则:
+            \begin{enumerate}
+                \item \(\chara F=p\);
+                \item \(n=[F:\Z_p]\), \(F=\Z_p(u)\) 其中 \(u\) 是 \(F\) 上的 \(n\) 次代数元;
+                \item \((F,+)\cong (\Z_p^n,+)\).
+            \end{enumerate}
+        \end{thm}
+
+        \begin{thm}
+            {有限域的乘法群是循环的}
+            设 \(F\) 是一个有限域, \(|F|=p^n\), 则 \(F\setminus\{0\}\) 是一个 \(p^n-1\) 阶循环群.
+        \end{thm}
+
+        \begin{dfn}
+            {本原元}
+            [Primitive Element]
+            设 \(F\) 是一个有限域, \(|F|=p^n\), 定义 \(F\) 上的一个\textbf{本原元}为乘法群 \(F\setminus\{0\}\) 中的一个生成元.
+        \end{dfn}
+
+        \begin{thm}
+            {有限域的唯一性}
+            对于任意的素数 \(p\) 和正整数 \(n\), 存在一个同构意义下唯一的有限域 \(F\) 满足 \(|F|=p^n\).
+        \end{thm}
+
+        \begin{dfn}
+            {Frobenius 自同构}
+            [Frobenius Automorphism]
+            设 \(F\) 是一个有限域, \(|F|=p^n\), 定义 \(F\) 上的\textbf{Frobenius 自同构}为
+            \[\sigma:F\to F, x\mapsto x^p.\]
+        \end{dfn}
+
+        \begin{thm}
+            {Frobenius 自同构是有限域的自同构群的生成元}
+            设 \(F\) 是一个有限域, \(|F|=p^n\), 则 \(\Gal(F/\Z_p)\) 是一个 \(n\) 阶循环群, 其生成元为 \(F\) 上的 Frobenius 自同构 \(\sigma\).
+        \end{thm}
+
+        \begin{thm}
+            {有限域的子域}
+            设 \(F\) 是一个有限域, \(|F|=p^n\), 则 \(F\) 的子域的个数等于 \(n\) 的正约数的个数.
+        \end{thm}
+
+        \begin{rmk}
+            这告诉我们, 要想构造一个 \(p^n\) 阶的有限域, 只需从 \(\Z_p\) 出发, 找到一个 \(n\) 次不可约多项式 \(f(x)\), 则 \(F=\Z_p[x]/\expval{f(x)}\) 就是一个 \(p^n\) 阶的有限域.
+        \end{rmk}
+
+        \begin{ins}
+            {9 阶的有限域}
+            构造一个 9 阶的有限域, 只需从 \(\Z_3\) 出发, 找到一个 2 次不可约多项式 \(f(x)\). \\
+            取 \(x^2+1\in\Z_3[x]\), 则 \(f(x)\) 是一个 2 次不可约多项式. 从而 \(\Z_3[x]/\expval{x^2+1}\) 是一个 9 阶的有限域. 
+            更明确地, 取 \(x^2+1\) 的一根 \(u\), 则
+            \[\Z_3[u]=\{a+bu \mid a,b\in\Z_3\}\]
+            是一个 9 阶的有限域, 其上的乘法表由 \(u^2=-1=2\) 确定.
+        \end{ins}
+
+        \begin{ins}
+            {低阶域上的不可约多项式}
+            为:\\
+            \(\Z_2\): \(x^2+x+1\), \(x^3+x+1\), \(x^3+x^2+1\), \(\cdots\);\\
+            \(\Z_3\): \(x^2+1\), \(x^2+x+2\), \(x^2+2x+2\), \(x^3+x+1\), \(x^3+x^2+2\), \(x^3+2x^2+1\), \(x^3+2x+1\), \(x^3+2x^2+x+2\), \(\cdots\);
+        \end{ins}
